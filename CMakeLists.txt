@@ -31,4 +31,4 @@ configure_file(
     ${CMAKE_BINARY_DIR}/tests/lit.site.cfg
     )
 
-add_custom_target(check ${LIT} -sv tests)
+add_custom_target(check ${LIT} -v tests)
