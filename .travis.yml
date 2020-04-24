@@ -11,6 +11,7 @@ jobs:
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
           packages:
             - clang-$LLVM_VERSION
+            - clang-tidy-$LLVM_VERSION
 
 script:
   - mkdir build && cd build
