@@ -14,7 +14,7 @@ jobs:
             - clang-tools-10
             - llvm-10-dev
             - llvm-10-tools
-            - libomp5-10
+            - libomp-10-dev
             - libc++-10-dev
 
 script:
