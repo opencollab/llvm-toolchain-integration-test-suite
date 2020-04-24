@@ -14,13 +14,16 @@ jobs:
             - clang-tidy-10
             - clang-tools-10
             - llvm-10-dev
+            - lld-10
+            - lldb-10
             - llvm-10-tools
             - libomp-10-dev
             - libc++-10-dev
+            - libc++abi-10-dev
             - libstdc++-9-dev
             - libclang-common-10-dev
 
 script:
   - mkdir build && cd build
-  - cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py -DCLANG_BINARY=/usr/bin/clang-10 -DCLANGXX_BINARY=/usr/bin/clang++-10  -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 -DLLD_BINARY=/usr/bin/lld-10  -DLLDB_BINARY=/usr/bin/lldb-10 -DSCANBUILD=/usr/bin/scan-build-10 -DSCANVIEW=/usr/bin/scan-view-10 -DENABLE_COMPILER_RT=ON -DENABLE_LIBCXX=ON ../
+  - cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py -DCLANG_BINARY=/usr/bin/clang-10 -DCLANGXX_BINARY=/usr/bin/clang++-10  -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 -DLLD_BINARY=/usr/bin/lld-10  -DLLDB_BINARY=/usr/bin/lldb-10 -DSCANBUILD=/usr/bin/scan-build-10 -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 -DSCANVIEW=/usr/bin/scan-view-10 -DENABLE_COMPILER_RT=ON -DENABLE_LIBCXX=ON ../
   - make check
