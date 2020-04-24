@@ -12,7 +12,10 @@ jobs:
             - clang-10
             - clang-tidy-10
             - clang-tools-10
+            - llvm-10-dev
             - llvm-10-tools
+            - libomp5-10
+            - libc++-10-dev
 
 script:
   - mkdir build && cd build
