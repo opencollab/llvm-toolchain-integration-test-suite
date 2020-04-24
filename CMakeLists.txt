@@ -19,6 +19,8 @@ find_program_or_warn(CLANGXX_BINARY clang++)
 find_program_or_warn(CLANG_BINARY clang)
 find_program_or_warn(LLD lld)
 find_program_or_warn(LLDB lldb)
+find_program_or_warn(SCANBUILD scan-build)
+find_program_or_warn(SCANVIEW scan-view)
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/lit.site.cfg.in

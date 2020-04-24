@@ -44,6 +44,8 @@ Lit substitutions
     - ``%clangxx``
     - ``%lldb``
     - ``%lld``
+    - ``%scan-build``
+    - ``%scan-view``
 
 requirements
 ++++++++++++
@@ -52,6 +54,8 @@ requirements
     - clangxx
     - lldb
     - lld
+    - scanbuild
+    - scanview
 
 License
 -------
