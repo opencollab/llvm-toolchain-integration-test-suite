@@ -11,7 +11,7 @@ macro(find_program_or_warn OUT_VAR name)
     message(STATUS "Checking for ${name}")
     find_program(${OUT_VAR} ${name})
     if (NOT ${OUT_VAR})
-        message(WARN "Disabling tests related to ${name}")
+        message(STATUS "Disabling tests related to ${name}")
     endif()
 endmacro()
 
@@ -27,4 +27,4 @@ configure_file(
     ${CMAKE_BINARY_DIR}/tests/lit.site.cfg
     )
 
-add_custom_target(check ${LIT} tests)
+add_custom_target(check ${LIT} -sv tests)
