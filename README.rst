@@ -28,7 +28,8 @@ Sensible configuration variables
 - ``LIT``: path to the lit program
 
 - ``CLANG_BINARY``: path to the clang binary to check
-- ``CLANGXX_BINARY``: clang binary to checkth to the clang++ binary to check
+- ``CLANGXX_BINARY``: path to the clang++ binary to check
+- ``CLANG_TIDY_BINARY``: path to the clang tidy binary to check
 - ``LLD_BINARY``: path to the lld binary to check
 - ``LLDB_BINARY``: path to the lldb binary to check
 
@@ -42,6 +43,7 @@ Lit substitutions
 
     - ``%clang``
     - ``%clangxx``
+    - ``%clang-tidy``
     - ``%lldb``
     - ``%lld``
     - ``%scan-build``
@@ -52,6 +54,7 @@ requirements
 
     - clang
     - clangxx
+    - clang-tidy
     - lldb
     - lld
     - scanbuild
