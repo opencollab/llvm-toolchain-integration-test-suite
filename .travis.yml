@@ -1,5 +1,3 @@
-env:
-  - LLVM_VERSION=10
 language: minimal
 jobs:
   include:
@@ -8,15 +6,15 @@ jobs:
       addons:
         apt:
           sources:
-            - sourceline: 'deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic-'$LLVM_VERSION' main'
+            - sourceline: 'deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
           packages:
-            - clang-$LLVM_VERSION
-            - clang-tidy-$LLVM_VERSION
-            - clang-tools-$LLVM_VERSION
-            - 'llvm-'$LLVM_VERSION'-tools'
+            - clang-10
+            - clang-tidy-10
+            - clang-tools-10
+            - llvm-10-tools
 
 script:
   - mkdir build && cd build
-  - cmake -DLIT=/usr/lib/llvm-$LLVM_VERSION/build/utils/lit/lit.py -DCLANG_BINARY=/usr/bin/clang-$LLVM_VERSION -DCLANGXX_BINARY=/usr/bin/clang++-$LLVM_VERSION  -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-$LLVM_VERSION -DLLD_BINARY=/usr/bin/lld-$LLVM_VERSION  -DLLDB_BINARY=/usr/bin/lldb-$LLVM_VERSION   ../
+  - cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py -DCLANG_BINARY=/usr/bin/clang-10 -DCLANGXX_BINARY=/usr/bin/clang++-10  -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 -DLLD_BINARY=/usr/bin/lld-10  -DLLDB_BINARY=/usr/bin/lldb-10   ../
   - make check
