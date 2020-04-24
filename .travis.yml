@@ -1,5 +1,6 @@
 env:
   - LLVM_VERSION=10
+language: minimal
 jobs:
   include:
     - os: linux
