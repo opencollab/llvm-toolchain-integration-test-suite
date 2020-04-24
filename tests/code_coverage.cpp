@@ -9,10 +9,11 @@
 
 #include <stdio.h>
 int main() {
-if (1==1) {
+    if (1==1) {
 	printf("true");
-}else{
+    } else {
 	printf("false");
 	return 42;
+    }
+return 0;
 }
-return 0;}
