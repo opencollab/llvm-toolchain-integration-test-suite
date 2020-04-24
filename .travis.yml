@@ -13,6 +13,7 @@ jobs:
           packages:
             - clang-$LLVM_VERSION
             - clang-tidy-$LLVM_VERSION
+            - clang-tools-$LLVM_VERSION
             - 'llvm-'$LLVM_VERSION'-tools'
 
 script:
