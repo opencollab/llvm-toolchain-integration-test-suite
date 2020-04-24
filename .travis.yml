@@ -8,7 +8,7 @@ jobs:
       addons:
         apt:
           sources:
-            - sourceline: 'deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic-$LLVM_VERSION main'
+            - sourceline: 'deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic-'$LLVM_VERSION' main'
               key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
           packages:
             - clang-$LLVM_VERSION
