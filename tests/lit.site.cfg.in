@@ -6,16 +6,23 @@ config.test_format = lit.formats.ShTest(False)
 config.suffixes = ['.ll', '.c', '.cpp', '.test', '.txt', '.s', '.mir']
 config.test_source_root = os.path.join("@CMAKE_CURRENT_SOURCE_DIR@", "tests")
 
-def enable_feature(name, binary):
+def enable_feature(name, option):
+    if option.lower() in ('on', 1):
+        config.available_features.add(name)
+
+def enable_program(name, binary):
     if os.path.exists(binary):
         config.available_features.add(name)
         config.substitutions.append(('%'+name, binary))
 
 # The order matters
-enable_feature('clang_tidy', "@CLANG_TIDY_BINARY@")
-enable_feature('clangxx', "@CLANGXX_BINARY@")
-enable_feature('clang', "@CLANG_BINARY@")
-enable_feature('lldb', "@LLDB_BINARY@")
-enable_feature('lld', "@LLD_BINARY@")
-enable_feature('scan-build', "@SCANBUILD_BINARY@")
-enable_feature('scan-view', "@SCANVIEW_BINARY@")
+enable_program('clang_tidy', "@CLANG_TIDY_BINARY@")
+enable_program('clangxx', "@CLANGXX_BINARY@")
+enable_program('clang', "@CLANG_BINARY@")
+enable_program('lldb', "@LLDB_BINARY@")
+enable_program('lld', "@LLD_BINARY@")
+enable_program('scan-build', "@SCANBUILD_BINARY@")
+enable_program('scan-view', "@SCANVIEW_BINARY@")
+
+enable_feature("compiler-rt", "@ENABLE_COMPILER_RT@")
+enable_feature("libc++", "@ENABLE_LIBCXX@")

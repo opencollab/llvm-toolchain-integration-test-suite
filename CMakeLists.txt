@@ -23,9 +23,12 @@ find_program_or_warn(LLDB lldb)
 find_program_or_warn(SCANBUILD scan-build)
 find_program_or_warn(SCANVIEW scan-view)
 
+option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)
+option(ENABLE_LIBCXX "assume libc++ is available" ON)
+
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/lit.site.cfg.in
     ${CMAKE_BINARY_DIR}/tests/lit.site.cfg
     )
 
-add_custom_target(check ${LIT} --show-unsupported --show-xfail -sv tests)
+add_custom_target(check ${LIT} --show-unsupported --show-xfail -v tests)

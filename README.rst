@@ -33,6 +33,9 @@ Sensible configuration variables
 - ``LLD_BINARY``: path to the lld binary to check
 - ``LLDB_BINARY``: path to the lldb binary to check
 
+- ``ENABLE_COMPILER_RT``: ON (the default) if we assume compiler-rt is available
+- ``ENABLE_LIBCXX``: ON (the default) if we assume libc++ is available
+
 Writing new tests
 -----------------
 
