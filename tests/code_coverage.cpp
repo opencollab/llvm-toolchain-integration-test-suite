@@ -3,8 +3,8 @@
 // RUN: mkdir -p %t/test && cd %t/test
 // RUN: %clang --coverage %s -o foo
 // RUN: ./foo
-// RUN: test ! -f foo.gcno
-// RUN: test ! -f foo.gcda
+// RUN: test -f code_coverage.gcno
+// RUN: test -f code_coverage.gcda
 #include <stdio.h>
 int main() {
 if (1==1) {
