@@ -1,0 +1,18 @@
+env:
+  - LLVM_VERSION=10
+jobs:
+  include:
+    - os: linux
+      dist: bionic
+      addons:
+        apt:
+          sources:
+            - sourceline: 'deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic-$LLVM_VERSION main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+          packages:
+            - clang-$LLVM_VERSION
+
+script:
+  - mkdir build && cd build
+  - cmake -DLIT=/usr/lib/llvm-$LLVM_VERSION/build/utils/lit/lit.py -DCLANG_BINARY=/usr/bin/clang-$LLVM_VERSION -DCLANGXX_BINARY=/usr/bin/clang++-$LLVM_VERSION  -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-$LLVM_VERSION -DLLD_BINARY=/usr/bin/lld-$LLVM_VERSION  -DLLDB_BINARY=/usr/bin/lldb-$LLVM_VERSION   ../
+  - make check
