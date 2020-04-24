@@ -11,6 +11,8 @@ def enable_feature(name, binary):
         config.available_features.add(name)
         config.substitutions.append(('%'+name, binary))
 
+# The order matters
+enable_feature('clang_tidy', "@CLANG_TIDY_BINARY@")
 enable_feature('clangxx', "@CLANGXX_BINARY@")
 enable_feature('clang', "@CLANG_BINARY@")
 enable_feature('lldb', "@LLDB_BINARY@")
