@@ -1,0 +1,25 @@
+language: minimal
+jobs:
+  include:
+    - os: linux
+      dist: bionic
+      addons:
+        apt:
+          sources:
+            - sourceline: 'deb https://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main'
+              key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+            - ubuntu-toolchain-r-test
+          packages:
+            - clang-10
+            - clang-tidy-10
+            - clang-tools-10
+            - llvm-10-dev
+            - llvm-10-tools
+            - libomp-10-dev
+            - libc++-10-dev
+            - libstdc++-9-dev
+
+script:
+  - mkdir build && cd build
+  - cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py -DCLANG_BINARY=/usr/bin/clang-10 -DCLANGXX_BINARY=/usr/bin/clang++-10  -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 -DLLD_BINARY=/usr/bin/lld-10  -DLLDB_BINARY=/usr/bin/lldb-10   ../
+  - make check
