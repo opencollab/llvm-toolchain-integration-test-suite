@@ -16,7 +16,7 @@ def enable_program(name, binary):
         config.substitutions.append(('%'+name, binary))
 
 # The order matters
-enable_program('clang_tidy', "@CLANG_TIDY_BINARY@")
+enable_program('clang-tidy', "@CLANG_TIDY_BINARY@")
 enable_program('clangxx', "@CLANGXX_BINARY@")
 enable_program('clang', "@CLANG_BINARY@")
 enable_program('lldb', "@LLDB_BINARY@")
