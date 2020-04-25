@@ -10,7 +10,7 @@
 // RUN: %t
 // RUN: %clangxx -std=c++17 -stdlib=libc++ %s -o %t
 // RUN: %t
-// REQUIRES: clangxx
+// REQUIRES: clangxx, libc++
 
 
 #include <vector>
