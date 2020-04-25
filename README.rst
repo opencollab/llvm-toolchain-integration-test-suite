@@ -5,6 +5,10 @@ An agglomeration of integration tests for the `LLVM Toolchain <https://llvm.org/
 Unlike the various existing llvm testing suites, this is meant to be used in an installed
 environment to detect packaging issues.
 
+This is an initiative started by Debian/Ubuntu and Fedora maintainers to agregate the testing effort.
+Hopefully, this project will be also a forcing function to bring more consistency in the LLVM
+toolchain packaging.
+
 Requirements
 ------------
 
