@@ -21,6 +21,7 @@ find_program_or_warn(CLANG_TIDY_BINARY clang-tidy)
 find_program_or_warn(LLVMNM llvm-nm)
 find_program_or_warn(LLD_BINARY lld)
 find_program_or_warn(LLDB_BINARY lldb)
+find_program_or_warn(LLVMCONFIG_BINARY llvm-config)
 find_program_or_warn(SCANBUILD scan-build)
 find_program_or_warn(SCANVIEW scan-view)
 
