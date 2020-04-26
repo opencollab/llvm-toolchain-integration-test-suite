@@ -15,6 +15,7 @@ def enable_program(name, binary):
         config.available_features.add(name)
         config.substitutions.append(('%'+name, binary))
 
+
 # The order matters
 enable_program('clang-tidy', "@CLANG_TIDY_BINARY@")
 enable_program('clangxx', "@CLANGXX_BINARY@")
@@ -23,6 +24,12 @@ enable_program('lldb', "@LLDB_BINARY@")
 enable_program('lld', "@LLD_BINARY@")
 enable_program('scan-build', "@SCANBUILD_BINARY@")
 enable_program('scan-view', "@SCANVIEW_BINARY@")
+
+if "@LLVM_CMAKE_PREFIX_PATH@":
+    config.available_features.add('cmake-llvm')
+    config.substitutions.append(('%cmake-llvm', "@CMAKE_COMMAND@ -DCMAKE_PREFIX_PATH=@LLVM_CMAKE_PREFIX_PATH@"))
+
+config.substitutions.append(('%cmake', '@CMAKE_COMMAND@'))
 
 enable_feature("compiler-rt", "@ENABLE_COMPILER_RT@")
 enable_feature("libc++", "@ENABLE_LIBCXX@")
