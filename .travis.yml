@@ -25,5 +25,16 @@ jobs:
 
 script:
   - mkdir build && cd build
-  - cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py -DCLANG_BINARY=/usr/bin/clang-10 -DCLANGXX_BINARY=/usr/bin/clang++-10  -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 -DLLD_BINARY=/usr/bin/lld-10  -DLLDB_BINARY=/usr/bin/lldb-10 -DSCANBUILD=/usr/bin/scan-build-10 -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 -DSCANVIEW=/usr/bin/scan-view-10 -DENABLE_COMPILER_RT=OFF -DENABLE_LIBCXX=ON -DLLVM_CMAKE_PREFIX_PATH=/usr/lib/llvm-10/lib/cmake/ ../
+  - cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py \
+          -DCLANG_BINARY=/usr/bin/clang-10 \
+          -DCLANGXX_BINARY=/usr/bin/clang++-10 \
+          -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 \
+          -DLLD_BINARY=/usr/bin/lld-10 \
+          -DLLDB_BINARY=/usr/bin/lldb-10 \
+          -DSCANBUILD=/usr/bin/scan-build-10 \
+          -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 \
+          -DSCANVIEW=/usr/bin/scan-view-10 \
+          -DENABLE_COMPILER_RT=OFF \
+          -DENABLE_LIBCXX=ON \
+          -DLLVM_CMAKE_PREFIX_PATH=/usr/lib/llvm-10/lib/cmake/ ../
   - make check
