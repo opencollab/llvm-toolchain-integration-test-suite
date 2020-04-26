@@ -34,6 +34,7 @@ script: |
           -DSCANBUILD=/usr/bin/scan-build-10 \
           -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 \
           -DSCANVIEW=/usr/bin/scan-view-10 \
+          -DLLVMNM=/usr/bin/llvm-nm-10 \
           -DENABLE_COMPILER_RT=OFF \
           -DENABLE_LIBCXX=ON \
           -DLLVM_CMAKE_PREFIX_PATH=/usr/lib/llvm-10/lib/cmake/ ../ && \
