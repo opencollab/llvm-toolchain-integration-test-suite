@@ -2,7 +2,7 @@ import os
 import lit
 
 config.name = 'LLVM regression suite'
-config.test_format = lit.formats.ShTest(False)
+config.test_format = lit.formats.ShTest(True)
 config.suffixes = ['.ll', '.c', '.cpp', '.test', '.txt', '.s', '.mir']
 config.test_source_root = os.path.join("@CMAKE_CURRENT_SOURCE_DIR@", "tests")
 
