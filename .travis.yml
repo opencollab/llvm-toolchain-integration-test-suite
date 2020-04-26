@@ -23,9 +23,9 @@ jobs:
             - libstdc++-9-dev
             - libclang-common-10-dev
 
-script:
-  - mkdir build && cd build
-  - cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py \
+script: |
+  mkdir build && cd build && \
+  cmake -DLIT=/usr/lib/llvm-10/build/utils/lit/lit.py \
           -DCLANG_BINARY=/usr/bin/clang-10 \
           -DCLANGXX_BINARY=/usr/bin/clang++-10 \
           -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 \
@@ -37,5 +37,5 @@ script:
           -DLLVM_NM=/usr/bin/llvm-nm-10 \
           -DENABLE_COMPILER_RT=OFF \
           -DENABLE_LIBCXX=ON \
-          -DLLVM_CMAKE_PREFIX_PATH=/usr/lib/llvm-10/lib/cmake/ ../
-  - make check
+          -DLLVM_CMAKE_PREFIX_PATH=/usr/lib/llvm-10/lib/cmake/ ../ && \
+  make check
