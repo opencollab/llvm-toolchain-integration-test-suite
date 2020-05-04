@@ -12,6 +12,7 @@ jobs:
           packages:
             - clang-10
             - clang-tidy-10
+            - clang-format-10
             - clang-tools-10
             - llvm-10-dev
             - lld-10
