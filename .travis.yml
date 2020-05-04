@@ -29,6 +29,7 @@ script: |
           -DCLANG_BINARY=/usr/bin/clang-10 \
           -DCLANGXX_BINARY=/usr/bin/clang++-10 \
           -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 \
+          -DCLANG_FORMAT_BINARY=/usr/bin/clang-format-10 \
           -DLLD_BINARY=/usr/bin/lld-10 \
           -DLLDB_BINARY=/usr/bin/lldb-10 \
           -DLLVMCONFIG_BINARY=/usr/bin/llvm-config-10 \
