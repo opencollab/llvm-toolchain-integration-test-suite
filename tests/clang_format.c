@@ -1,6 +1,6 @@
 // Test clang-format availability
 //
-// RUN: %clang-format %s | grep stdio.h
+// RUN: %clang-format %s | grep -E '^#include <stdio.h>'
 // REQUIRES: clang-format
 
   #include <stdio.h>
