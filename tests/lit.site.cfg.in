@@ -27,6 +27,7 @@ enable_program('lldb', "@LLDB_BINARY@")
 enable_program('lld', "@LLD_BINARY@")
 enable_program('scan-build', "@SCANBUILD@")
 enable_program('scan-view', "@SCANVIEW@")
+enable_program('opt', "@OPT_BINARY@")
 
 if "@LLVM_CMAKE_PREFIX_PATH@":
     config.available_features.add('cmake-llvm')

@@ -34,6 +34,7 @@ script: |
           -DLLD_BINARY=/usr/bin/lld-10 \
           -DLLDB_BINARY=/usr/bin/lldb-10 \
           -DLLVMCONFIG_BINARY=/usr/bin/llvm-config-10 \
+          -DOPT_BINARY=/usr/bin/opt-10 \
           -DSCANBUILD=/usr/bin/scan-build-10 \
           -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-10 \
           -DSCANVIEW=/usr/bin/scan-view-10 \
