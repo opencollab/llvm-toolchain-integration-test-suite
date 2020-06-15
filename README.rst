@@ -12,7 +12,7 @@ toolchain packaging.
 Requirements
 ------------
 
-The `lit <https://pypi.org/project/lit/>`_ tool is used ro tun the tests and
+The `lit <https://pypi.org/project/lit/>`_ tool is used to run the tests and
 `cmake <https://cmake.org/>`_ is used for the configuration step.
 
 Usage
