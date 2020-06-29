@@ -2,7 +2,7 @@
 //
 // REQUIRES: clang, llvm-nm
 // RUN: %clang -o %t -fsanitize=thread -g -O1 %s
-// RUN: llvm-nm %t | grep __tsan
+// RUN: %llvm-nm %t | grep __tsan
 // RUN: env TSAN_OPTIONS="log_path=stdout:exitcode=0"  %t 2>&1 > %t.out
 // RUN: grep -q "data race" %t.out
 
