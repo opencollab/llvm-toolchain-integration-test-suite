@@ -2,8 +2,7 @@
 # RUN: rm -rf %t
 # RUN: mkdir -p %t/_build
 # RUN: cat %s > %t/CMakeLists.txt
-# RUN: cd %t/_build && %cmake-llvm ..
-# REQUIRES: cmake-llvm
+# RUN: cd %t/_build && %cmake ..
 
 cmake_minimum_required(VERSION 3.4.3)
 
