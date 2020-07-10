@@ -30,7 +30,6 @@ find_program_or_warn(SCANVIEW scan-view)
 
 option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)
 option(ENABLE_LIBCXX "assume libc++ is available" ON)
-set(LLVM_CMAKE_PREFIX_PATH "" CACHE PATH "Path to the prefix for LLVM CMake files")
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/lit.site.cfg.in
