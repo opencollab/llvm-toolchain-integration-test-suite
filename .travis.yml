@@ -40,7 +40,7 @@ script: |
           -DSCANVIEW=/usr/bin/scan-view-10 \
           -DLLVMNM=/usr/bin/llvm-nm-10 \
           -DLLVMPROFDATA=/usr/bin/llvm-profdata-10 \
-          -DENABLE_COMPILER_RT=OFF \
+          -DENABLE_COMPILER_RT=ON \
           -DENABLE_LIBCXX=ON \
           ../ && \
   make check
