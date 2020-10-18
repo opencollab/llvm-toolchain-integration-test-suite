@@ -5,6 +5,7 @@
 // RUN: %llvm-nm %t | grep __tsan
 // RUN: env TSAN_OPTIONS="log_path=stdout:exitcode=0"  %t 2>&1 > %t.out
 // RUN: grep -q "data race" %t.out
+// XFAIL: arm 
 
 #include <pthread.h>
 #include <stdio.h>
