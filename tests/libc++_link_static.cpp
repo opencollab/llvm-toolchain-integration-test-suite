@@ -7,7 +7,7 @@
 // ldd %t 2>&1|grep -qv libc++abi.so.1
 //
 // For now, the next command fails:
-// RUN: %clangxx -o %t %s -pie -stdlib=libc++ -static-libstdc++
+// RUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++
 // REQUIRES: clangxx, libc++
 // XFAIL: *
 
