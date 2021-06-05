@@ -1,15 +1,15 @@
-// Test libc++ static
+// Test lib(std)c++ static
 // https://bugs.llvm.org/show_bug.cgi?id=43604
 //
+// Check linking with libstdc++
 // RUN: %clangxx -o %t %s -pie -static-libstdc++
 // RUN: %t
-// ldd %t 2>&1|grep -qv libc++.so.1
-// ldd %t 2>&1|grep -qv libc++abi.so.1
+// RUN: ldd %t 2>&1|grep -qv libstdc++
 //
-// For now, the next command fails:
-// RUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++
+// Check linking with libc++. As of now, this fails:
+// NORUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++
+//
 // REQUIRES: clangxx, libc++
-// XFAIL: *
 
 #include <iostream>
 int main () {
