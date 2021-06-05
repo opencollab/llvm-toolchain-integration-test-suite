@@ -7,7 +7,7 @@
 // RUN: ldd %t 2>&1|grep -qv libstdc++
 //
 // Check linking with libc++. As of now, this fails:
-// NORUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++
+// FAIL: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++
 //
 // REQUIRES: clangxx, libc++
 
