@@ -1,0 +1,12 @@
+# Test scan-build-py
+# REQUIRES: scanbuildpy
+
+# RUN: rm -rf %t
+# RUN: mkdir -p %t
+# RUN: cat %s > %t/Makefile
+# RUN: cp %S/scanbuild_py.cpp %t
+# RUN: cd %t && %scanbuildpy make|grep "to examine bug reports"
+# RUN: cd %t && %scanbuildpy --intercept-first make && test -f compile_commands.json
+
+all:
+	$(CC) -c scanbuild_py.cpp

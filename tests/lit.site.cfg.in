@@ -29,6 +29,7 @@ enable_program('lldb', "@LLDB_BINARY@")
 enable_program('lld', "@LLD_BINARY@")
 enable_program('scan-build', "@SCANBUILD@")
 enable_program('scan-view', "@SCANVIEW@")
+enable_program('scanbuildpy', "@SCANBUILDPY@")
 enable_program('opt', "@OPT_BINARY@")
 
 config.substitutions.append(('%cmake', '@CMAKE_COMMAND@'))
