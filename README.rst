@@ -55,6 +55,7 @@ Lit substitutions
     - ``%lld``
     - ``%scan-build``
     - ``%scan-view``
+    - ``%scan-build-py``
 
 requirements
 ++++++++++++
@@ -65,6 +66,7 @@ requirements
     - lldb
     - lld
     - scanbuild
+    - scanbuild-py
     - scanview
 
 License
