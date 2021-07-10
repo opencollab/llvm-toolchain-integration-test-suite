@@ -1,4 +1,6 @@
 # Test scan-build-py
+# It seems that scan-build python isn't able to analyze clang raw call
+# So, creating a Makefile to allow the test
 # REQUIRES: scanbuildpy
 
 # RUN: rm -rf %t
