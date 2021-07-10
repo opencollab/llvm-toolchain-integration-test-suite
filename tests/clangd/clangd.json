@@ -1,0 +1,56 @@
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "initialize",
+  "params": {
+    "capabilities": {
+      "textDocument": {
+        "completion": {
+          "completionItem": {
+            "snippetSupport": true
+          }
+        }
+      }
+    },
+    "trace": "off"
+  }
+}
+---
+{
+    "jsonrpc": "2.0",
+    "method": "textDocument/didOpen",
+    "params": {
+        "textDocument": {
+            "uri": "test:///main.cpp",
+            "languageId": "cpp",
+            "version": 1,
+            "text": "int func_with_args(int a, int b);\nint main() {\nfunc_with\n}"
+        }
+    }
+}
+---
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "textDocument/completion",
+    "params": {
+        "textDocument": {
+            "uri": "test:///main.cpp"
+        },
+        "position": {
+            "line": 2,
+            "character": 7
+         }
+     }
+}
+---
+{
+    "jsonrpc": "2.0",
+    "id": 4,
+    "method": "shutdown"
+}
+---
+{
+    "jsonrpc": "2.0",
+    "method": "exit"
+}
