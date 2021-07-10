@@ -1,0 +1,5 @@
+# Test clangd
+# REQUIRES: clangd
+# RUN: %clangd -lit-test -pch-storage=memory < %S/Inputs/clangd.json &> %s.log
+# RUN: grep -q '"insertText": "func_with_args(${1:int a}, ${2:int b})",' %s.log
+

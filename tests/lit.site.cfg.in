@@ -20,6 +20,7 @@ def enable_program(name, binary):
 enable_program('clang-tidy', "@CLANG_TIDY_BINARY@")
 enable_program('clang-format-diff', "@CLANG_FORMAT_DIFF_BINARY@")
 enable_program('clang-format', "@CLANG_FORMAT_BINARY@")
+enable_program('clangd', "@CLANGD_BINARY@")
 enable_program('clangxx', "@CLANGXX_BINARY@")
 enable_program('clang', "@CLANG_BINARY@")
 enable_program('llvm-nm', "@LLVMNM@")
