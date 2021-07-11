@@ -26,7 +26,8 @@ jobs:
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }}-${{ matrix.version }} main"
           fi
           sudo apt-get update
-          sudo apt-get install -y clang-${{ matrix.version }} clangd-${{ matrix.version }} clang-tidy-${{ matrix.version }} clang-format-${{ matrix.version }} clang-tools-${{ matrix.version }} llvm-${{ matrix.version }}-dev lld-${{ matrix.version }} lldb-${{ matrix.version }} llvm-${{ matrix.version }}-tools libomp-${{ matrix.version }}-dev libc++-${{ matrix.version }}-dev libc++abi-${{ matrix.version }}-dev libclang-common-${{ matrix.version }}-dev libclang-${{ matrix.version }}-dev libclang-cpp${{ matrix.version }}-dev
+          sudo apt --purge -y remove "llvm-*-runtime"
+          sudo apt-get install -y clang-${{ matrix.version }} clang-tidy-${{ matrix.version }} clang-format-${{ matrix.version }} clang-tools-${{ matrix.version }} llvm-${{ matrix.version }}-dev lld-${{ matrix.version }} lldb-${{ matrix.version }} llvm-${{ matrix.version }}-tools libomp-${{ matrix.version }}-dev libc++-${{ matrix.version }}-dev libc++abi-${{ matrix.version }}-dev libclang-common-${{ matrix.version }}-dev libclang-${{ matrix.version }}-dev libclang-cpp${{ matrix.version }}-dev llvm-${{ matrix.version}}-runtime
       - name: Run the testsuite
         shell: bash
         run: |
@@ -51,6 +52,7 @@ jobs:
            -DSCANBUILDPY=/usr/bin/scan-build-py-${{ matrix.version }} \
            -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-${{ matrix.version }} \
            -DSCANVIEW=/usr/bin/scan-view-${{ matrix.version }} \
+           -DLLVMDIS=/usr/bin/llvm-dis-${{ matrix.version }} \
            -DLLVMNM=/usr/bin/llvm-nm-${{ matrix.version }} \
            -DLLC=/usr/bin/llc-${{ matrix.version }} \
            -DLLI=/usr/bin/lli-${{ matrix.version }} \
