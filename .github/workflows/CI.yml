@@ -45,6 +45,9 @@ jobs:
            -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-${{ matrix.version }} \
            -DSCANVIEW=/usr/bin/scan-view-${{ matrix.version }} \
            -DLLVMNM=/usr/bin/llvm-nm-${{ matrix.version }} \
+           -DLLC=/usr/bin/llc-${{ matrix.version }} \
+           -DLLI=/usr/bin/lli-${{ matrix.version }} \
+           -DOPT=/usr/bin/opt-${{ matrix.version }} \
            -DLLVMPROFDATA=/usr/bin/llvm-profdata-${{ matrix.version }} \
            -DENABLE_COMPILER_RT=ON \
            -DENABLE_LIBCXX=ON \
