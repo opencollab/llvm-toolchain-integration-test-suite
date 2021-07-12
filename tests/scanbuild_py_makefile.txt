@@ -1,0 +1,13 @@
+# Test scan-build-py
+# It seems that scan-build python isn't able to analyze clang raw call
+# So, creating a Makefile to allow the test
+# REQUIRES: scan-build-py
+
+# RUN: rm -rf %t
+# RUN: mkdir -p %t
+# RUN: cp %S/scanbuild_py.cpp %t
+# RUN: cd %t && %scan-build-py make -f %s|grep "to examine bug reports"
+# RUN: cd %t && %scan-build-py --intercept-first make -f %s && test -f compile_commands.json
+
+all:
+	$(CC) -c scanbuild_py.cpp

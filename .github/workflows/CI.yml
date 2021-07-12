@@ -30,6 +30,10 @@ jobs:
       - name: Run the testsuite
         shell: bash
         run: |
+         # temporary workaround
+         # The path to analyze-cc needs to be set, it will be fixed in
+         # future upload of apt.llvm.org
+         export PATH=$PATH:/usr/share/clang/scan-build-py-${{ matrix.version }}/bin/:/usr/lib/llvm-${{ matrix.version }}/libexec
          mkdir build && cd build
          cmake -DLIT=/usr/lib/llvm-${{ matrix.version }}/build/utils/lit/lit.py \
            -DCLANG_BINARY=/usr/bin/clang-${{ matrix.version }} \
@@ -42,6 +46,7 @@ jobs:
            -DLLVMCONFIG_BINARY=/usr/bin/llvm-config-${{ matrix.version }} \
            -DOPT_BINARY=/usr/bin/opt-${{ matrix.version }} \
            -DSCANBUILD=/usr/bin/scan-build-${{ matrix.version }} \
+           -DSCANBUILDPY=/usr/bin/scan-build-py-${{ matrix.version }} \
            -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-${{ matrix.version }} \
            -DSCANVIEW=/usr/bin/scan-view-${{ matrix.version }} \
            -DLLVMNM=/usr/bin/llvm-nm-${{ matrix.version }} \
