@@ -28,7 +28,7 @@ find_program_or_warn(LLDB_BINARY lldb)
 find_program_or_warn(LLVMCONFIG_BINARY llvm-config)
 find_program_or_warn(SCANBUILD scan-build)
 find_program_or_warn(SCANVIEW scan-view)
-find_program_or_warn(SCANBUILDPY scanbuildpy)
+find_program_or_warn(SCANBUILDPY scan-build-py)
 
 
 option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)
