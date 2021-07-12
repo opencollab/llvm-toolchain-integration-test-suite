@@ -55,7 +55,7 @@ Lit substitutions
     - ``%lld``
     - ``%scan-build``
     - ``%scan-view``
-    - ``%scan-build-py``
+    - ``%py-scan-build``
 
 requirements
 ++++++++++++
