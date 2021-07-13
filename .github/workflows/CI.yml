@@ -26,7 +26,7 @@ jobs:
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }}-${{ matrix.version }} main"
           fi
           sudo apt-get update
-          sudo apt-get install -y clang-${{ matrix.version }} clang-tidy-${{ matrix.version }} clang-format-${{ matrix.version }} clang-tools-${{ matrix.version }} llvm-${{ matrix.version }}-dev lld-${{ matrix.version }} lldb-${{ matrix.version }} llvm-${{ matrix.version }}-tools libomp-${{ matrix.version }}-dev libc++-${{ matrix.version }}-dev libc++abi-${{ matrix.version }}-dev libclang-common-${{ matrix.version }}-dev libclang-${{ matrix.version }}-dev libclang-cpp${{ matrix.version }}-dev
+          sudo apt-get install -y clang-${{ matrix.version }} clangd-${{ matrix.version }} clang-tidy-${{ matrix.version }} clang-format-${{ matrix.version }} clang-tools-${{ matrix.version }} llvm-${{ matrix.version }}-dev lld-${{ matrix.version }} lldb-${{ matrix.version }} llvm-${{ matrix.version }}-tools libomp-${{ matrix.version }}-dev libc++-${{ matrix.version }}-dev libc++abi-${{ matrix.version }}-dev libclang-common-${{ matrix.version }}-dev libclang-${{ matrix.version }}-dev libclang-cpp${{ matrix.version }}-dev
       - name: Run the testsuite
         shell: bash
         run: |
@@ -41,6 +41,7 @@ jobs:
            -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-${{ matrix.version }} \
            -DCLANG_FORMAT_BINARY=/usr/bin/clang-format-${{ matrix.version }} \
            -DCLANG_FORMAT_DIFF_BINARY=/usr/bin/clang-format-diff-${{ matrix.version }} \
+           -DCLANGD_BINARY=/usr/bin/clangd-${{ matrix.version }} \
            -DLLD_BINARY=/usr/bin/lld-${{ matrix.version }} \
            -DLLDB_BINARY=/usr/bin/lldb-${{ matrix.version }} \
            -DLLVMCONFIG_BINARY=/usr/bin/llvm-config-${{ matrix.version }} \
