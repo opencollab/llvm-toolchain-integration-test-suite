@@ -16,18 +16,24 @@ def enable_program(name, binary):
         config.substitutions.append(('%'+name, binary))
 
 
-# The order matters
+# The order matters, e.g. substitution for clang-format-diff
+# must appear before clang-format, because the latter is a prefix of the former.
+
 enable_program('clang-tidy', "@CLANG_TIDY_BINARY@")
 enable_program('clang-format-diff', "@CLANG_FORMAT_DIFF_BINARY@")
 enable_program('clang-format', "@CLANG_FORMAT_BINARY@")
 enable_program('clangxx', "@CLANGXX_BINARY@")
 enable_program('clang', "@CLANG_BINARY@")
 enable_program('llvm-nm', "@LLVMNM@")
+enable_program('llc', "@LLC@")
+enable_program('lli', "@LLI@")
+enable_program('opt', "@OPT@")
 enable_program('llvm-profdata', "@LLVMPROFDATA@")
 enable_program('llvm-config', "@LLVMCONFIG_BINARY@")
 enable_program('llvm-mt', "@LLVMMT_BINARY@")
 enable_program('lldb', "@LLDB_BINARY@")
 enable_program('lld', "@LLD_BINARY@")
+enable_program('scan-build-py', "@SCANBUILDPY@")
 enable_program('scan-build', "@SCANBUILD@")
 enable_program('scan-view', "@SCANVIEW@")
 enable_program('opt', "@OPT_BINARY@")
