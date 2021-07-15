@@ -5,6 +5,7 @@ config.name = 'LLVM regression suite'
 config.test_format = lit.formats.ShTest(True)
 config.suffixes = ['.ll', '.c', '.cpp', '.test', '.txt', '.s', '.mir']
 config.test_source_root = os.path.join("@CMAKE_CURRENT_SOURCE_DIR@", "tests")
+config.excludes = ['Inputs']
 
 def enable_feature(name, option):
     if option.lower() in ('on', 1):
