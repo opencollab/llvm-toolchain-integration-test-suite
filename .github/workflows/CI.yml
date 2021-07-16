@@ -53,6 +53,7 @@ jobs:
            -DLLC=/usr/bin/llc-${{ matrix.version }} \
            -DLLI=/usr/bin/lli-${{ matrix.version }} \
            -DOPT=/usr/bin/opt-${{ matrix.version }} \
+           -DLLVMMT=/usr/bin/llvm-mt-${{ matrix.version }} \
            -DLLVMPROFDATA=/usr/bin/llvm-profdata-${{ matrix.version }} \
            -DENABLE_COMPILER_RT=ON \
            -DENABLE_LIBCXX=ON \
