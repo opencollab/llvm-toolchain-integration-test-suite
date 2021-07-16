@@ -1,6 +1,6 @@
 // Checks that we generate BuildID
 //
-// REQUIRES: clang, lld
+// REQUIRES: clang, lld, llvm-objdump
 // RUN: %clang -fuse-ld=lld -flto -O2 %S/Inputs/foo.c %s -o %t
 // RUN: %t
 // RUN: %llvm-objdump -s %t|grep note.gnu.build-id
