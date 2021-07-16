@@ -26,6 +26,8 @@ jobs:
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }}-${{ matrix.version }} main"
           fi
           sudo apt-get update
+          # Remove the previous installed llvm runtime to make sure that the installed
+          # runtime sets the right version of binfmts
           sudo apt --purge -y remove "llvm-*-runtime"
           sudo apt-get install -y clang-${{ matrix.version }} clang-tidy-${{ matrix.version }} clang-format-${{ matrix.version }} clang-tools-${{ matrix.version }} llvm-${{ matrix.version }}-dev lld-${{ matrix.version }} lldb-${{ matrix.version }} llvm-${{ matrix.version }}-tools libomp-${{ matrix.version }}-dev libc++-${{ matrix.version }}-dev libc++abi-${{ matrix.version }}-dev libclang-common-${{ matrix.version }}-dev libclang-${{ matrix.version }}-dev libclang-cpp${{ matrix.version }}-dev llvm-${{ matrix.version}}-runtime
       - name: Run the testsuite
