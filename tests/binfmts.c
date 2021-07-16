@@ -1,12 +1,12 @@
 // Test LLVM IR
-// RUN: %clang -O3 -emit-llvm %s -c -o foo.bc
-// RUN: chmod +x foo.bc
-// RUN: ./foo.bc|grep -q "lli foo"
-// RUN: %llvm-dis < foo.bc|grep -q "lli foo"
+// RUN: %clang -O3 -emit-llvm %s -c -o %t.bc
+// RUN: chmod +x %t.bc
+// RUN: ./%t.bc | grep -q "lli foo"
+// RUN: %llvm-dis < %t.bc | grep -q "lli foo"
 // REQUIRES: clang, llvm-dis
 
 #include <stdio.h>
 int main() {
-    printf("lli foo\n");
+    puts("lli foo");
     return 0;
 }
