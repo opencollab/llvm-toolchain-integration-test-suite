@@ -5,11 +5,6 @@
 
 #include <stdio.h>
 int main() {
-if (1==1) {
-  printf("true");
-}else{
-  printf("false");
-  return 42;
-}
-return 0;
+    puts("I like to std::move(it)");
+    return 0;
 }
