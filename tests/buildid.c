@@ -3,12 +3,12 @@
 // REQUIRES: clang, lld
 // RUN: %clang -fuse-ld=lld -flto -O2 %S/Inputs/foo.c %s -o %t
 // RUN: %t
-// RUN: file %t|grep -q BuildID
+// RUN: %llvm-objdump -s %t|grep note.gnu.build-id
 // RUN: %clang -O2  %S/Inputs/foo.c %s -o %t
 // RUN: %t
-// RUN: file %t|grep -q BuildID
+// RUN: %llvm-objdump -s %t|grep note.gnu.build-id
 // RUN: strip %t
-// RUN: file %t|grep -q BuildID
+// RUN: %llvm-objdump -s %t|grep note.gnu.build-id
 
 int foo(void);
 int main() {
