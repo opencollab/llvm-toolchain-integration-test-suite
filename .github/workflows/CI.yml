@@ -45,6 +45,7 @@ jobs:
            -DLLD_BINARY=/usr/bin/lld-${{ matrix.version }} \
            -DLLDB_BINARY=/usr/bin/lldb-${{ matrix.version }} \
            -DLLVMCONFIG_BINARY=/usr/bin/llvm-config-${{ matrix.version }} \
+           -DLLVMOBJDUMP_BINARY=/usr/bin/llvm-objdump-${{ matrix.version }} \
            -DOPT_BINARY=/usr/bin/opt-${{ matrix.version }} \
            -DSCANBUILD=/usr/bin/scan-build-${{ matrix.version }} \
            -DSCANBUILDPY=/usr/bin/scan-build-py-${{ matrix.version }} \

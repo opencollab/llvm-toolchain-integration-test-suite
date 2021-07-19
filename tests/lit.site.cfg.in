@@ -5,6 +5,7 @@ config.name = 'LLVM regression suite'
 config.test_format = lit.formats.ShTest(True)
 config.suffixes = ['.ll', '.c', '.cpp', '.test', '.txt', '.s', '.mir']
 config.test_source_root = os.path.join("@CMAKE_CURRENT_SOURCE_DIR@", "tests")
+config.excludes = ['Inputs']
 
 def enable_feature(name, option):
     if option.lower() in ('on', 1):
@@ -31,6 +32,7 @@ enable_program('lli', "@LLI@")
 enable_program('opt', "@OPT@")
 enable_program('llvm-profdata', "@LLVMPROFDATA@")
 enable_program('llvm-config', "@LLVMCONFIG_BINARY@")
+enable_program('llvm-objdump', "@LLVMOBJDUMP_BINARY@")
 enable_program('lldb', "@LLDB_BINARY@")
 enable_program('lld', "@LLD_BINARY@")
 enable_program('scan-build-py', "@SCANBUILDPY@")
