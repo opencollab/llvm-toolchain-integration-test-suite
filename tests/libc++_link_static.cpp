@@ -2,7 +2,7 @@
 // https://bugs.llvm.org/show_bug.cgi?id=43604
 //
 // Check linking with libstdc++
-// RUN: %clangxx -o %t %s -pie -static-libstdc++
+// RUN: %clangxx -o %t %s -fPIC -pie -static-libstdc++
 // RUN: %t
 // RUN: ldd %t 2>&1|grep -qv libstdc++
 //
