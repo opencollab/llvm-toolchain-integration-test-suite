@@ -1,6 +1,6 @@
 // Test a Rpass=inline
 //
-// RUN: %clangxx -O2 -Rpass=inline %s -c &> tee | %t.log
+// RUN: %clangxx -O2 -Rpass=inline %s -c &> %t.log
 // RUN: grep -q -E "(inlined into main with|cost=always)" %t.log
 // REQUIRES: clangxx
 
