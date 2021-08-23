@@ -1,4 +1,4 @@
-// Check that libc++ & libc++abi are built with:
+// Check that libc++ & libc++abi are built with the options:
 // -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON
 // -DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON
 // -DLIBCXX_STATICALLY_LINK_ABI_IN_SHARED_LIBRARY=OFF
