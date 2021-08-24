@@ -1,4 +1,4 @@
-// Test libunwind
+// Test libunwind - only packaged from -12
 //
 // REQUIRES: clang
 // RUN: %clang %s -o %t -lunwind -ldl -I/usr/include/libunwind
