@@ -4,7 +4,7 @@
 //
 // RUN: mkdir -p %t/test && cd %t/test
 // RUN: %clang -S -fsave-optimization-record -emit-llvm %s -o save-optimization-record.c.opt
-// RUN: test -f save-optimization-record.c.opt.yaml
+// RUN: test -s save-optimization-record.c.opt.yaml
 // REQUIRES: clang
 
 #define N 1536
