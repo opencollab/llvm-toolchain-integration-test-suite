@@ -44,3 +44,4 @@ config.substitutions.append(('%cmake', '@CMAKE_COMMAND@'))
 
 enable_feature("compiler-rt", "@ENABLE_COMPILER_RT@")
 enable_feature("libc++", "@ENABLE_LIBCXX@")
+enable_feature("libunwind", "@ENABLE_LIBUNWIND@")

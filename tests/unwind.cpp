@@ -1,6 +1,6 @@
 // Test libunwind - only packaged from -12
 //
-// REQUIRES: clang
+// REQUIRES: clang, libunwind
 // RUN: %clang %s -o %t -lunwind -ldl -I/usr/include/libunwind
 // RUN: %t
 // RUN: %clang %s -o %t -unwindlib=libunwind -rtlib=compiler-rt -I/usr/include/libunwind

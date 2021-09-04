@@ -39,6 +39,7 @@ Sensible configuration variables
 
 - ``ENABLE_COMPILER_RT``: ON (the default) if we assume compiler-rt is available
 - ``ENABLE_LIBCXX``: ON (the default) if we assume libc++ is available
+- ``ENABLE_UNWIND``: ON (the default) if we assume libunwind is available
 
 Writing new tests
 -----------------

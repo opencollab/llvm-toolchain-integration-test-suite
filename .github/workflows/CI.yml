@@ -39,6 +39,11 @@ jobs:
          # future upload of apt.llvm.org
          export PATH=$PATH:/usr/share/clang/scan-build-py-${{ matrix.version }}/bin/:/usr/lib/llvm-${{ matrix.version }}/libexec
          mkdir build && cd build
+         LIBUNWIND_ENABLED=ON
+         if test ${{ matrix.version }} -lt 12; then
+            # Libunwind has been packaged only from 12
+            LIBUNWIND_ENABLED=OFF
+         fi
          cmake -DLIT=/usr/lib/llvm-${{ matrix.version }}/build/utils/lit/lit.py \
            -DCLANG_BINARY=/usr/bin/clang-${{ matrix.version }} \
            -DCLANGXX_BINARY=/usr/bin/clang++-${{ matrix.version }} \
@@ -62,5 +67,8 @@ jobs:
            -DLLVMPROFDATA=/usr/bin/llvm-profdata-${{ matrix.version }} \
            -DENABLE_COMPILER_RT=ON \
            -DENABLE_LIBCXX=ON \
+           -DENABLE_LIBUNWIND=$LIBUNWIND_ENABLED \
            ../
+         # debug the output
+         cat tests/lit.site.cfg
          make check
