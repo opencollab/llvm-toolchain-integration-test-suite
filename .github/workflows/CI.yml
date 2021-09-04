@@ -29,6 +29,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y clang-${{ matrix.version }} clangd-${{ matrix.version }} clang-tidy-${{ matrix.version }} clang-format-${{ matrix.version }} clang-tools-${{ matrix.version }} llvm-${{ matrix.version }}-dev lld-${{ matrix.version }} lldb-${{ matrix.version }} llvm-${{ matrix.version }}-tools libomp-${{ matrix.version }}-dev libc++-${{ matrix.version }}-dev libc++abi-${{ matrix.version }}-dev libclang-common-${{ matrix.version }}-dev libclang-${{ matrix.version }}-dev libclang-cpp${{ matrix.version }}-dev
           if test ${{ matrix.version }} -gt 11; then
+            # Install llvm-XX-linker-tools
+            # Contains gold and other programs
+            sudo apt-get install -y llvm-${{ matrix.version }}-linker-tools
+            dpkg -L llvm-${{ matrix.version }}-linker-tools
+          fi
+          if test ${{ matrix.version }} -gt 11; then
             sudo apt-get install -y libunwind-${{ matrix.version }}-dev
           fi
       - name: Run the testsuite
@@ -63,4 +69,4 @@ jobs:
            -DENABLE_COMPILER_RT=ON \
            -DENABLE_LIBCXX=ON \
            ../
-         make check
+           make check
