@@ -30,8 +30,8 @@ jobs:
           else
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }}-${{ matrix.version }} main"
           fi
-          if test ${{ matrix.version }} -le 11; then
-            # Recent versions of llvm need a compiler with C++ 20 support.
+          if test ${{ matrix.version }} -ge 14 -a ${{ env.UBUNTU_CODENAME }} == "bionic"; then
+            # Recent versions of llvm need a compiler with C++ 20 support. Bionic doesn't have this out of the box.
             # It requires a more recent version of libstdc++
             sudo add-apt-repository ppa:ubuntu-toolchain-r/test
           fi
