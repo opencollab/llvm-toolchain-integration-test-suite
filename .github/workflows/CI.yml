@@ -40,6 +40,11 @@ jobs:
           if test ${{ matrix.version }} -gt 11; then
             sudo apt-get install -y libunwind-${{ matrix.version }}-dev
           fi
+
+          # C++ backend for mlir only appeared with LLVM 14
+          if test ${{ matrix.version }} -gt 13; then
+            sudo apt-get install -y mlir-${{ matrix.version }}-tools
+          fi
       - name: Run the testsuite
         shell: bash
         run: |
@@ -68,6 +73,7 @@ jobs:
            -DLLC=/usr/bin/llc-${{ matrix.version }} \
            -DLLI=/usr/bin/lli-${{ matrix.version }} \
            -DOPT=/usr/bin/opt-${{ matrix.version }} \
+           -DMLIRTRANSLATE=/usr/bin/mlir-translate-${{ matrix.version }} \
            -DLLVMPROFDATA=/usr/bin/llvm-profdata-${{ matrix.version }} \
            -DENABLE_COMPILER_RT=ON \
            -DENABLE_LIBCXX=ON \
