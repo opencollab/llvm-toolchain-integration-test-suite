@@ -34,6 +34,7 @@ find_program_or_warn(LLVMOBJDUMP_BINARY llvm-objdump)
 find_program_or_warn(SCANBUILD scan-build)
 find_program_or_warn(SCANVIEW scan-view)
 find_program_or_warn(SCANBUILDPY scan-build-py)
+find_program_or_warn(MLIRTRANSLATE mlir-translate)
 
 
 option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)
