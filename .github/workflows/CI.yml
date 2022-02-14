@@ -43,7 +43,7 @@ jobs:
 
           # C++ backend for mlir only appeared with LLVM 14
           if test ${{ matrix.version }} -gt 13; then
-            sudo apt-get install -y mlir-${{ matrix.version }}-tools
+            sudo apt-get install -y mlir-${{ matrix.version }}-tools libmlir-${{ matrix.version }}-dev
           fi
       - name: Run the testsuite
         shell: bash
