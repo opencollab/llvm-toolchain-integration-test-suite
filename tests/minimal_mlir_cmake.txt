@@ -1,0 +1,15 @@
+# Test minimal cmake MLIR project
+# REQUIRES: mlir-translate
+# RUN: rm -rf %t
+# RUN: mkdir -p %t/_build
+# RUN: cat %s > %t/CMakeLists.txt
+# RUN: cd %t/_build && %cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir
+
+cmake_minimum_required(VERSION 3.13.4)
+project(standalone-dialect LANGUAGES CXX C)
+
+set(CMAKE_BUILD_WITH_INSTALL_NAME_DIR ON)
+
+set(CMAKE_CXX_STANDARD 14 CACHE STRING "C++ standard to conform to")
+
+find_package(MLIR REQUIRED CONFIG)
