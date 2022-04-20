@@ -1,0 +1,3 @@
+cmake_minimum_required(VERSION 3.18.0)
+project(ex)
+add_subdirectory(mlir-dialect-out-of-tree)
