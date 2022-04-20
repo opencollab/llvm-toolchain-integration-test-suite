@@ -4,7 +4,7 @@
 # RUN: mkdir -p %t/_build
 # RUN: cp -r mlir_dialect %t
 # RUN: cat %s > %t/CMakeLists.txt
-# RUN: cd %t/_build && %cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir
+# RUN: cd %t/_build && %cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir  -DLLVM_DIR=`%llvm-config --libdir`/cmake/llvm
 
 cmake_minimum_required(VERSION 3.13.4)
 project(standalone-dialect LANGUAGES CXX C)
