@@ -1,0 +1,10 @@
+# Test minimal cmake MLIR project
+# REQUIRES: mlir-translate
+# RUN: rm -rf %t
+# RUN: mkdir -p %t/_build
+# RUN: cat %s > %t/CMakeLists.txt
+# RUN: cd %t/_build && %cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir -DLLVM_DIR=`%llvm-config --libdir`/cmake/llvm && cmake --build .
+
+cmake_minimum_required(VERSION 3.18.0)
+project(ex)
+add_subdirectory(mlir_dialect)
