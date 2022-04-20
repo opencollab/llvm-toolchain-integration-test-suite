@@ -7,5 +7,5 @@
 # RUN: cd %t/_build && %cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir -DLLVM_DIR=`%llvm-config --libdir`/cmake/llvm && cmake --build .
 
 cmake_minimum_required(VERSION 3.18.0)
-project(ex)
+project(mlir_out_of_tree)
 add_subdirectory(mlir_dialect)
