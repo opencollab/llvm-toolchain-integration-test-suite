@@ -2,7 +2,7 @@
 # REQUIRES: mlir-translate
 # RUN: rm -rf %t
 # RUN: mkdir -p %t/_build
-# RUN: cp -r mlir_dialect %t
+# RUN: cp -r %S/mlir_dialect %t
 # RUN: cat %s > %t/CMakeLists.txt
 # RUN: cd %t/_build && %cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir -DLLVM_DIR=`%llvm-config --libdir`/cmake/llvm && cmake --build .
 
