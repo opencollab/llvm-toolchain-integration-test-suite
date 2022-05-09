@@ -4,7 +4,7 @@ project(LLVMToolchainIntegrationTestSuite VERSION 1.0 LANGUAGES NONE)
 message(STATUS "Checking for lit")
 find_program(LIT lit)
 if(NOT LIT)
-    message(ERROR "lit program not found")
+    message(FATAL_ERROR "lit program not found")
 endif()
 
 macro(find_program_or_warn OUT_VAR name)
