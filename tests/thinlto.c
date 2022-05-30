@@ -1,5 +1,5 @@
 // verify that thinlto is available
-// REQUIRES: clang, lld
+// REQUIRES: clang
 // RUN: %clang -flto=thin -O2 %S/Inputs/foo.c %s -o %t
 // RUN: %t
 
