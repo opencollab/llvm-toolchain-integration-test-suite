@@ -1,10 +1,10 @@
 // Test libunwind - only packaged from -12
 //
 // REQUIRES: clang, libunwind, llvm-nm
-// RUN: %clang %s -o %t.gcc -unwindlib=libgcc
+// RUN: %clangxx %s -o %t.gcc -unwindlib=libgcc
 // RUN: %llvm-nm %t.gcc | grep _Unwind_Resume
 // RUN: %t.gcc
-// RUN: %clang %s -o %t.llvm -unwindlib=libunwind -rtlib=compiler-rt
+// RUN: %clangxx %s -o %t.llvm -unwindlib=libunwind -rtlib=compiler-rt
 // RUN: %llvm-nm %t.gcc | grep _Unwind_Resume
 // RUN: %t.llvm
 
