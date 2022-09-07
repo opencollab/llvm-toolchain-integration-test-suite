@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
     container:
-      image: "fedora:34"
+      image: "fedora:36"
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
