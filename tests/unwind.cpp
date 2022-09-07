@@ -1,74 +1,25 @@
 // Test libunwind - only packaged from -12
 //
-// REQUIRES: clang, libunwind
-// RUN: %clang %s -o %t -lunwind -ldl -I/usr/include/libunwind
-// RUN: %t
-// RUN: %clang %s -o %t -unwindlib=libunwind -rtlib=compiler-rt -I/usr/include/libunwind
-// RUN: %t
+// REQUIRES: clang, libunwind, llvm-nm
+// RUN: %clang %s -o %t.gcc -unwindlib=libgcc
+// RUN: %llvm-nm %t.gcc | grep _Unwind_Resume
+// RUN: %t.gcc
+// RUN: %clang %s -o %t.llvm -unwindlib=libunwind -rtlib=compiler-rt
+// RUN: %llvm-nm %t.gcc | grep _Unwind_Resume
+// RUN: %t.llvm
 
-// See https://www.nongnu.org/libunwind/man/libunwind(3).html
-#define UNW_LOCAL_ONLY
-#include <libunwind.h>
-#include <stdlib.h>
-
-void backtrace(int lower_bound) {
-  unw_context_t context;
-  unw_getcontext(&context);
-
-  unw_cursor_t cursor;
-  unw_init_local(&cursor, &context);
-
-  int n = 0;
-  do {
-    ++n;
-    if (n > 100) {
-      abort();
+struct f { ~f() { }};
+int foo(int n) {
+    f  _;
+    if(n > 2)
+    throw int();
+    return 0;
+}
+int main(int argc, char** argv) {
+    try {
+      return foo(argc);
     }
-  } while (unw_step(&cursor) > 0);
-
-  if (n < lower_bound) {
-    abort();
-  }
-}
-
-void test1(int i) {
-  backtrace(i);
-}
-
-void test2(int i, int j) {
-  backtrace(i);
-  test1(j);
-}
-
-void test3(int i, int j, int k) {
-  backtrace(i);
-  test2(j, k);
-}
-
-void test_no_info() {
-  unw_context_t context;
-  unw_getcontext(&context);
-
-  unw_cursor_t cursor;
-  unw_init_local(&cursor, &context);
-
-  unw_proc_info_t info;
-  int ret = unw_get_proc_info(&cursor, &info);
-  if (ret != UNW_ESUCCESS)
-    abort();
-
-  // Set the IP to an address clearly outside any function.
-  unw_set_reg(&cursor, UNW_REG_IP, (unw_word_t)0);
-
-  ret = unw_get_proc_info(&cursor, &info);
-  if (ret != UNW_ENOINFO)
-    abort();
-}
-
-int main(int, char**) {
-  test1(1);
-  test2(1, 2);
-  test3(1, 2, 3);
-  test_no_info();
-  return 0;
+    catch(...) {
+        return 0;
+    }
 }
