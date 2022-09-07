@@ -16,7 +16,7 @@ jobs:
         run: |
             sudo dnf install -y llvm-devel clang-devel cmake make python3-lit \
                  lld clang-tools-extra gcc gcc-c++ libcxx-devel compiler-rt libstdc++-devel \
-                 glibc-static libstdc++-static mlir mlir-devel llvm-libunwind
+                 glibc-static libstdc++-static mlir mlir-devel llvm-libunwind libunwind-devel
       - name: Run the testsuite
         run: |
          mkdir build && cd build
