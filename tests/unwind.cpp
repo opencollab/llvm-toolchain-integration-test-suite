@@ -6,6 +6,8 @@
 // RUN: %clang %s -o %t -unwindlib=libunwind -rtlib=compiler-rt -I/usr/include/libunwind
 // RUN: %t
 
+// See https://www.nongnu.org/libunwind/man/libunwind(3).html
+#define UNW_LOCAL_ONLY
 #include <libunwind.h>
 #include <stdlib.h>
 
