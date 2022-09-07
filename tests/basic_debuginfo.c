@@ -1,7 +1,7 @@
 // Test that debuginfo produced by clang is compatible with basic dwarf tool
 // from https://rosettacode.org/wiki/Guess_the_number#C
 
-// RUN: %clang -g3 %s -o %t && objdump -g --dwarf-check %t | grep -E 'DWARF Version:\s*4'
+// RUN: %clang -g3 -gdwarf-4 %s -o %t && objdump -g --dwarf-check %t | grep -E 'DWARF Version:\s*4'
 // REQUIRES: clang
 
 #include <stdlib.h>

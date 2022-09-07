@@ -4,7 +4,7 @@ project(LLVMToolchainIntegrationTestSuite VERSION 1.0 LANGUAGES NONE)
 message(STATUS "Checking for lit")
 find_program(LIT lit)
 if(NOT LIT)
-    message(ERROR "lit program not found")
+    message(FATAL_ERROR "lit program not found")
 endif()
 
 macro(find_program_or_warn OUT_VAR name)
@@ -34,6 +34,7 @@ find_program_or_warn(LLVMOBJDUMP_BINARY llvm-objdump)
 find_program_or_warn(SCANBUILD scan-build)
 find_program_or_warn(SCANVIEW scan-view)
 find_program_or_warn(SCANBUILDPY scan-build-py)
+find_program_or_warn(MLIRTRANSLATE mlir-translate)
 
 
 option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)

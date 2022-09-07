@@ -1,0 +1,38 @@
+# Tests LLVM pass using new pass manager. Based on https://llvm.org/docs/WritingAnLLVMNewPMPass.html
+# RUN: rm -rf %t
+# RUN: mkdir -p %t/_build
+# RUN: cat %s > %t/CMakeLists.txt
+# RUN: cp %S/Inputs/llvm_newpm_pass.cpp %t
+# RUN: cd %t/_build
+# RUN: %cmake .. -DCMAKE_C_COMPILER=%clang -DCMAKE_CXX_COMPILER=%clangxx -DLLVM_DIR=`%llvm-config --cmakedir`
+# RUN: %cmake --build .
+# RUN: %clang -emit-llvm -O3 -c %S/Inputs/foo.c -o llvm-ir.bc
+# RUN: %opt -load-pass-plugin=./HelloPass.so -disable-output ./llvm-ir.bc  -passes=hellonewpm 2> %t.output
+# RUN: grep "Function name: foo" %t.output
+# REQUIRES: opt, clang, clangxx
+
+cmake_minimum_required(VERSION 3.4.3)
+
+project(TestLLVMPass)
+find_package(LLVM REQUIRED CONFIG)
+list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
+include(AddLLVM)
+
+# Starting LLVM 16, std=c++17 is required
+if(LLVM_PACKAGE_VERSION VERSION_GREATER_EQUAL "16.0.0")
+    set(CMAKE_CXX_STANDARD 17 CACHE STRING "")
+else()
+    set(CMAKE_CXX_STANDARD 14 CACHE STRING "")
+endif()
+
+add_llvm_library(HelloPass MODULE llvm_newpm_pass.cpp)
+
+# Add LLVM headers filled from find_package
+target_include_directories(HelloPass
+    PRIVATE ${LLVM_INCLUDE_DIRS}
+)
+
+# LLVM's compile definitions
+target_compile_definitions(HelloPass
+    PRIVATE ${LLVM_DEFINITIONS}
+)

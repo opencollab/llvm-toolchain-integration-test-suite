@@ -3,6 +3,7 @@
 // RUN: %clang -fopenmp %s -o %t
 // RUN: %t | grep "Num Threads: 1"
 // REQUIRES: clang
+// XFAIL: s390x
 
 #include <omp.h>
 #include <stdio.h>

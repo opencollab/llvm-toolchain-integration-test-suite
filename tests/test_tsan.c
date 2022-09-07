@@ -1,11 +1,11 @@
 // Test tsan with config variables
 //
-// REQUIRES: clang, llvm-nm
+// REQUIRES: clang, llvm-nm, compiler-rt
 // RUN: %clang -o %t -fsanitize=thread -g -O1 %s
 // RUN: %llvm-nm %t | grep __tsan
 // RUN: env TSAN_OPTIONS="log_path=stdout:exitcode=0"  %t 2>&1 > %t.out
 // RUN: grep -q "data race" %t.out
-// XFAIL: arm 
+// XFAIL: arm, i686, i386
 
 #include <pthread.h>
 #include <stdio.h>

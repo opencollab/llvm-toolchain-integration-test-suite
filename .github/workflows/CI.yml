@@ -1,5 +1,9 @@
 name: Build with different version
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 2 * * *"
 
 jobs:
   build:
@@ -8,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-18.04, ubuntu-20.04]
-        version: [10, 11, 12, 13, 14]
+        version: [10, 11, 12, 13, 14, 15, 16]
     steps:
       - uses: actions/checkout@v2
 
@@ -21,15 +25,25 @@ jobs:
       - name: Install Dependencies
         run: |
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-          if test ${{ matrix.version }} == 14; then
+          if test ${{ matrix.version }} == 16; then
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }} main"
           else
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }}-${{ matrix.version }} main"
+          fi
+          if test ${{ matrix.version }} -ge 14 -a ${{ env.UBUNTU_CODENAME }} == "bionic"; then
+            # Recent versions of llvm need a compiler with C++ 20 support. Bionic doesn't have this out of the box.
+            # It requires a more recent version of libstdc++
+            sudo add-apt-repository ppa:ubuntu-toolchain-r/test
           fi
           sudo apt-get update
           sudo apt-get install -y clang-${{ matrix.version }} clangd-${{ matrix.version }} clang-tidy-${{ matrix.version }} clang-format-${{ matrix.version }} clang-tools-${{ matrix.version }} llvm-${{ matrix.version }}-dev lld-${{ matrix.version }} lldb-${{ matrix.version }} llvm-${{ matrix.version }}-tools libomp-${{ matrix.version }}-dev libc++-${{ matrix.version }}-dev libc++abi-${{ matrix.version }}-dev libclang-common-${{ matrix.version }}-dev libclang-${{ matrix.version }}-dev libclang-cpp${{ matrix.version }}-dev
           if test ${{ matrix.version }} -gt 11; then
             sudo apt-get install -y libunwind-${{ matrix.version }}-dev
+          fi
+
+          # C++ backend for mlir only appeared with LLVM 14
+          if test ${{ matrix.version }} -gt 13; then
+            sudo apt-get install -y mlir-${{ matrix.version }}-tools libmlir-${{ matrix.version }}-dev
           fi
       - name: Run the testsuite
         shell: bash
@@ -64,6 +78,7 @@ jobs:
            -DLLC=/usr/bin/llc-${{ matrix.version }} \
            -DLLI=/usr/bin/lli-${{ matrix.version }} \
            -DOPT=/usr/bin/opt-${{ matrix.version }} \
+           -DMLIRTRANSLATE=/usr/bin/mlir-translate-${{ matrix.version }} \
            -DLLVMPROFDATA=/usr/bin/llvm-profdata-${{ matrix.version }} \
            -DENABLE_COMPILER_RT=ON \
            -DENABLE_LIBCXX=ON \
