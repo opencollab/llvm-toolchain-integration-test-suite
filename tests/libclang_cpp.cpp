@@ -2,7 +2,8 @@
 //
 // REQUIRES: clang, llvm-config
 // RUN: %clangxx -lclang-cpp -v %s -o %t `%llvm-config --cxxflags --ldflags --libs`
-// RUN: ldd %t 2>&1|grep -q libclang-cpp
+// RUN: ldd %t 2>&1 > %t.lddoutput
+// RUN: grep -q libclang-cpp %t.lddoutput
 
 #include "clang/Tooling/CommonOptionsParser.h"
 #include "llvm/Support/CommandLine.h"
