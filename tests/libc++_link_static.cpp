@@ -7,7 +7,7 @@
 // RUN: ldd %t 2>&1|grep -v libstdc++
 //
 // Check static linking with libc++
-// RUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++
+// RUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++ -pthread
 //
 // REQUIRES: clangxx, libc++
 
