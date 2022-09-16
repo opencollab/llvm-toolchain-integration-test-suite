@@ -9,7 +9,7 @@
 // Check static linking with libc++
 // RUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++ -pthread
 //
-// REQUIRES: clangxx, libc++
+// REQUIRES: clangxx, static-libc++
 
 #include <iostream>
 int main () {
