@@ -6,10 +6,10 @@
 // RUN: %t
 // RUN: ldd %t 2>&1|grep -v libstdc++
 //
-// Check static linking with libc++. As of now, this fails:
-// FAIL: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++
+// Check static linking with libc++
+// RUN: %clangxx -o %t -fPIC %s -pie -stdlib=libc++ -static-libstdc++ -pthread
 //
-// REQUIRES: clangxx, libc++
+// REQUIRES: clangxx, static-libc++
 
 #include <iostream>
 int main () {
