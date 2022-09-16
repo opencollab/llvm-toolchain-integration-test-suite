@@ -39,6 +39,7 @@ find_program_or_warn(MLIRTRANSLATE mlir-translate)
 
 option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)
 option(ENABLE_LIBCXX "assume libc++ is available" ON)
+option(ENABLE_LIBUNWIND "assume libunwind is available" ON)
 
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/lit.site.cfg.in

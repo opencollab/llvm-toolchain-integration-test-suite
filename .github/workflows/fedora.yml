@@ -9,14 +9,14 @@ jobs:
     strategy:
       fail-fast: false
     container:
-      image: "fedora:34"
+      image: "fedora:37"
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: |
             sudo dnf install -y llvm-devel clang-devel cmake make python3-lit \
                  lld clang-tools-extra gcc gcc-c++ libcxx-devel compiler-rt libstdc++-devel \
-                 glibc-static libstdc++-static mlir mlir-devel
+                 glibc-static libstdc++-static mlir mlir-devel llvm-libunwind llvm-libunwind-devel
       - name: Run the testsuite
         run: |
          mkdir build && cd build
