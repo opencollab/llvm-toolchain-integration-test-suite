@@ -5,21 +5,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
+      matrix:
+        fedora-version: [37, rawhide]
     container:
-      image: "fedora:37"
+      image: "fedora:${{matrix.fedora-version}}"
+      # These options are required to be able to run lldb inside the container
+      options: "--cap-add=SYS_PTRACE --security-opt seccomp=unconfined"
     steps:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: |
-            sudo dnf install -y llvm-devel clang-devel cmake make python3-lit \
-                 lld clang-tools-extra gcc gcc-c++ libcxx-devel compiler-rt libstdc++-devel \
-                 glibc-static libcxx-static libstdc++-static mlir mlir-devel \
-                 llvm-libunwind llvm-libunwind-devel
+          sudo dnf install -y llvm-devel clang-devel cmake make python3-lit \
+                lld lldb clang-analyzer clang-tools-extra gcc gcc-c++ \
+                libcxx-devel compiler-rt libstdc++-devel \
+                glibc-static libcxx-static libstdc++-static mlir mlir-devel \
+                llvm-libunwind llvm-libunwind-devel
       - name: Run the testsuite
         run: |
-         mkdir build && cd build
-         cmake .. -DENABLE_COMPILER_RT=ON -DENABLE_LIBCXX=ON
-         cmake --build . --target check -v
+          mkdir build && cd build
+          cmake ..
+          cmake --build . --target check -v
