@@ -5,6 +5,7 @@
 // RUN: %clangxx %s -o %t.llvm -unwindlib=libunwind -rtlib=compiler-rt -L/usr/lib64/llvm-unwind
 // RUN: %llvm-nm %t.llvm | grep _Unwind_Resume
 // RUN: %t.llvm
+// XFAIL: s390x
 
 struct f { ~f() { }};
 int foo(int n) {
