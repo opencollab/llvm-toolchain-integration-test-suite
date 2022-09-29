@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.4.3)
 project(LLVMToolchainIntegrationTestSuite VERSION 1.0 LANGUAGES NONE)
 
+enable_language(C)
+enable_language(CXX)
+
 message(STATUS "Checking for lit")
 find_program(LIT lit)
 if(NOT LIT)

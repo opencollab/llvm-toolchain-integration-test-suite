@@ -22,6 +22,8 @@ def enable_program(name, binary):
 # The order matters, e.g. substitution for clang-format-diff
 # must appear before clang-format, because the latter is a prefix of the former.
 
+enable_program('cc', "@CMAKE_C_COMPILER@")
+enable_program('cxx', "@CMAKE_CXX_COMPILER@")
 enable_program('clang-tidy', "@CLANG_TIDY_BINARY@")
 enable_program('clang-format-diff', "@CLANG_FORMAT_DIFF_BINARY@")
 enable_program('clang-format', "@CLANG_FORMAT_BINARY@")
