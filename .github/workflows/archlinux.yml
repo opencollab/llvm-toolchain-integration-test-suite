@@ -1,0 +1,23 @@
+name: Build on Arch Linux
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    container:
+      image: "archlinux"
+      # These options are required to be able to run lldb inside the container
+      options: "--cap-add=SYS_PTRACE --security-opt seccomp=unconfined"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: pacman -Syu --noconfirm llvm clang cmake make lld lldb gcc libc++ openmp
+      - name: Run the testsuite
+        run: |
+          mkdir build && cd build
+          cmake .. -DENABLE_LIBUNWIND=OFF -DENABLE_STATIC_LIBCXX=OFF
+          cmake --build . --target check -v
