@@ -1,6 +1,6 @@
-// RUN: %clangxx `%llvm-config --cxxflags` -fPIC -shared %s -o Hello.so
+// RUN: %cxx `%llvm-config --cxxflags` -fPIC -shared %s -o Hello.so
 // RUN: %opt -load ./Hello.so -help | grep "Hello World Pass"
-// REQUIRES: opt, clangxx, llvm-config
+// REQUIRES: opt, llvm-config
 
 
 //===- Hello.cpp - Example code from "Writing an LLVM Pass" ---------------===//

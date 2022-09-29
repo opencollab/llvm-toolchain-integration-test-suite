@@ -4,12 +4,12 @@
 # RUN: cat %s > %t/CMakeLists.txt
 # RUN: cp %S/Inputs/llvm_newpm_pass.cpp %t
 # RUN: cd %t/_build
-# RUN: %cmake .. -DCMAKE_C_COMPILER=%clang -DCMAKE_CXX_COMPILER=%clangxx -DLLVM_DIR=`%llvm-config --cmakedir`
+# RUN: %cmake .. -DCMAKE_C_COMPILER=%cc -DCMAKE_CXX_COMPILER=%cxx -DLLVM_DIR=`%llvm-config --cmakedir`
 # RUN: %cmake --build .
 # RUN: %clang -emit-llvm -O3 -c %S/Inputs/foo.c -o llvm-ir.bc
 # RUN: %opt -load-pass-plugin=./HelloPass.so -disable-output ./llvm-ir.bc  -passes=hellonewpm 2> %t.output
 # RUN: grep "Function name: foo" %t.output
-# REQUIRES: opt, clang, clangxx
+# REQUIRES: opt, clang
 
 cmake_minimum_required(VERSION 3.4.3)
 
