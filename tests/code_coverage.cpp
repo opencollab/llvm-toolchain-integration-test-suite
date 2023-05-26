@@ -3,7 +3,6 @@
 // RUN: mkdir -p %t/test && cd %t/test
 // RUN: %clang --coverage %s -o foo
 // RUN: ./foo
-// RUN: ls
 // RUN: test -f code_coverage.gcno -o -f foo-code_coverage.gcno
 // RUN: test -f code_coverage.gcda -o -f foo-code_coverage.gcda
 // REQUIRES: clang
