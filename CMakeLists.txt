@@ -45,6 +45,24 @@ option(ENABLE_LIBCXX "assume libc++ is available" ON)
 option(ENABLE_STATIC_LIBCXX "assume libc++.a is available" ON)
 option(ENABLE_LIBUNWIND "assume libunwind is available" ON)
 
+message(STATUS "Checking kernel support for tagged address ABI")
+try_run(
+    _TEST_RUN_RESULT
+    _BUILD_RESULT_UNUSED
+    ${CMAKE_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_tagged_addr_abi_support.c
+    )
+if(DEFINED _TEST_RUN_RESULT AND _TEST_RUN_RESULT EQUAL 0)
+    set(SUPPORT_HWASAN ON)
+else()
+    message(STATUS "Tagged address ABI disabled, disabling hwasan test(s)")
+    set(SUPPORT_HWASAN OFF)
+endif()
+option(ENABLE_HWASAN
+    "The host supports Aarch64 tagged address ABI"
+    ${SUPPORT_HWASAN}
+    )
+
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/lit.site.cfg.in
     ${CMAKE_BINARY_DIR}/tests/lit.site.cfg
