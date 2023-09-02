@@ -81,6 +81,16 @@ option(ENABLE_HWASAN
     ${SUPPORT_HWASAN}
     )
 
+# Check for _Float16 support
+if (CLANGXX_BINARY)
+    message(STATUS "Checking for _Float16 support in ${CLANGXX_BINARY}")
+    execute_process(COMMAND ${CLANGXX_BINARY} -c ${CMAKE_CURRENT_SOURCE_DIR}/tests/float16.cpp RESULT_VARIABLE FLOAT16_STATUS ERROR_QUIET OUTPUT_QUIET)
+    if (${FLOAT16_STATUS} EQUAL 0)
+	message(STATUS "_Float16 enabled.")
+	set(ENABLE_FLOAT16 ON)
+    endif()
+endif()
+
 configure_file(
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/lit.site.cfg.in
     ${CMAKE_BINARY_DIR}/tests/lit.site.cfg
