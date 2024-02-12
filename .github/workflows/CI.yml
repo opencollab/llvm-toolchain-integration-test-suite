@@ -25,7 +25,7 @@ jobs:
       - name: Install Dependencies
         run: |
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-          if test ${{ matrix.version }} == 19 then
+          if test ${{ matrix.version }} == 19; then
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }} main"
           else
             sudo apt-add-repository "deb http://apt.llvm.org/${{ env.UBUNTU_CODENAME }}/ llvm-toolchain-${{ env.UBUNTU_CODENAME }}-${{ matrix.version }} main"
