@@ -4,7 +4,7 @@
 // RUN: %clangxx -c -o %t.o -fPIC %s
 // RUN: %clangxx -fuse-ld=lld -nostdlib++ -Wl,-Bstatic -lc++ -Wl,-Bdynamic -stdlib=libc++ -shared -o %t %t.o
 //
-// REQUIRES: clangxx, static-libc++
+// REQUIRES: clangxx, lld, static-libc++
 
 #include <exception>
 
