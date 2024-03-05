@@ -1,8 +1,4 @@
 cmake_minimum_required(VERSION 3.4.3)
-project(LLVMToolchainIntegrationTestSuite VERSION 1.0 LANGUAGES NONE)
-
-enable_language(C)
-enable_language(CXX)
 
 message(STATUS "Checking for lit")
 find_program(LIT lit)
@@ -15,6 +11,16 @@ macro(find_program_or_warn OUT_VAR name)
     find_program(${OUT_VAR} ${name})
     if (NOT ${OUT_VAR})
         message(STATUS "Disabling tests related to ${name}")
+    endif()
+endmacro()
+
+macro(find_library_or_warn OUT_VAR name)
+    cmake_parse_arguments(MY_FIND "" "" "HINTS" ${ARGN} )
+
+    message(STATUS "Checking for ${name}")
+    find_library(${OUT_VAR} ${name} HINTS ${MY_FIND_HINTS})
+    if (NOT ${OUT_VAR})
+        message(WARNING "${name} not found. Disabling tests related to ${name}")
     endif()
 endmacro()
 
@@ -39,11 +45,23 @@ find_program_or_warn(SCANVIEW scan-view)
 find_program_or_warn(SCANBUILDPY scan-build-py)
 find_program_or_warn(MLIRTRANSLATE mlir-translate)
 
+set(CMAKE_C_COMPILER ${CLANG_BINARY})
+set(CMAKE_CXX_COMPILER ${CLANGXX_BINARY})
+
+project(LLVMToolchainIntegrationTestSuite VERSION 1.0 LANGUAGES NONE)
+
+enable_language(C)
+enable_language(CXX)
 
 option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)
 option(ENABLE_LIBCXX "assume libc++ is available" ON)
 option(ENABLE_STATIC_LIBCXX "assume libc++.a is available" ON)
 option(ENABLE_LIBUNWIND "assume libunwind is available" ON)
+
+# Detect if libomp is supported. Ubuntu stores the symlink library under a
+# version-dependent directory so we need to provide a hint to CMake to find it.
+string(REGEX MATCH "^[0-9]+" LLVM_MAJOR ${CMAKE_C_COMPILER_VERSION})
+find_library_or_warn(LIBOMP libomp.so HINTS /usr/lib/llvm-${LLVM_MAJOR}/lib/)
 
 message(STATUS "Checking kernel support for tagged address ABI")
 try_run(
