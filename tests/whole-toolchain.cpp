@@ -5,6 +5,8 @@
 // alternative would be to force usage of LLVM unwinder when building compiler-rt.
 // RUN: %clangxx -fuse-ld=lld -rtlib=compiler-rt -stdlib=libc++ -lgcc_eh %s -o %t
 // RUN: %t | grep "Hello World"
+// s390x now runs but fails because it does not support compiler-rt builtins.
+// XFAIL: s390x
 
 #include <iostream>
 int main(int argc, char **argv) {
