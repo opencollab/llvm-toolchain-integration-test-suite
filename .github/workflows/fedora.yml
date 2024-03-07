@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        fedora-version: [37, rawhide]
+        fedora-version: [38, 39, rawhide]
     container:
       image: "fedora:${{matrix.fedora-version}}"
       # These options are required to be able to run lldb inside the container

@@ -2,8 +2,7 @@
 // RUN: %clang -fopenmp -DTOOLS %s -shared -o %t_Tools.so
 // RUN: %clang -fopenmp -UTOOLS %s -o %t
 // RUN: OMP_TOOL_LIBRARIES=%t_Tools.so %t | grep "INIT"
-// REQUIRES: clang
-// XFAIL: s390x
+// REQUIRES: clang, libomp
 #ifdef TOOLS
 
 // OpenMP Tools are only supported starting OpenMP 5

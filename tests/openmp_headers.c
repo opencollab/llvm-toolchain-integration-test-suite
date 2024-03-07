@@ -1,8 +1,7 @@
 // Test OpenMP headers install
 //
 // RUN: %clang -fopenmp -E %s -o %t
-// REQUIRES: clang
-// XFAIL: s390x
+// REQUIRES: clang, libomp
 
 #include <omp.h>
 #if _OPENMP >= 201811
