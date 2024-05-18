@@ -48,7 +48,7 @@ jobs:
           # Exists only after LLVM 15
           if test ${{ matrix.version }} -gt 14; then
             sudo apt-get install -y libpolly-${{ matrix.version }}-dev
-         fi
+          fi
       - name: Run the testsuite
         shell: bash
         run: |
