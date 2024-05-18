@@ -18,6 +18,9 @@ def enable_program(name, binary):
         config.available_features.add(name)
         config.substitutions.append(('%'+name, binary))
 
+def enable_library(name, library):
+    if os.path.exists(library):
+        config.available_features.add(name)
 
 # The order matters, e.g. substitution for clang-format-diff
 # must appear before clang-format, because the latter is a prefix of the former.
@@ -44,6 +47,8 @@ enable_program('scan-build', "@SCANBUILD@")
 enable_program('scan-view', "@SCANVIEW@")
 enable_program('opt', "@OPT_BINARY@")
 enable_program('mlir-translate', "@MLIRTRANSLATE@")
+
+enable_library('libomp', "@LIBOMP@")
 
 config.substitutions.append(('%cmake', '@CMAKE_COMMAND@'))
 
