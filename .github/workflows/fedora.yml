@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        fedora-version: [38, 39, rawhide]
+        fedora-version: [40, 41, rawhide]
     container:
       image: "fedora:${{matrix.fedora-version}}"
       # These options are required to be able to run lldb inside the container
@@ -22,7 +22,7 @@ jobs:
                 lld lldb clang-analyzer clang-tools-extra gcc gcc-c++ \
                 libcxx-devel compiler-rt libstdc++-devel \
                 glibc-static libcxx-static libstdc++-static mlir mlir-devel \
-                llvm-libunwind llvm-libunwind-devel
+                llvm-libunwind llvm-libunwind-devel binutils-gold
       - name: Run the testsuite
         run: |
           mkdir build && cd build
