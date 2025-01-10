@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    if: github.repository == 'opencollab/llvm-toolchain-integration-test-suite'
     strategy:
       fail-fast: false
       matrix:
