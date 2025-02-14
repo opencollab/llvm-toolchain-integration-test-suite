@@ -1,5 +1,5 @@
 // REQUIRES: clang, mlir-translate, llvm-config
-// RUN: if `%llvm-config --version | grep -q 14`; then sed 's/func.func/func/' %s; else cat %s; fi | %mlir-translate --mlir-to-cpp > %t.c
+// RUN: if `%llvm-config --version | grep -qE '^14\.'`; then sed 's/func.func/func/' %s; else cat %s; fi | %mlir-translate --mlir-to-cpp > %t.c
 // RUN: %clang %t.c -o %t
 // RUN: %t
 
