@@ -21,8 +21,11 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-18.04'}}
         run: echo "UBUNTU_CODENAME=bionic" >> $GITHUB_ENV
       - name: Set Ubuntu codename (Focal)
-        if: ${{ matrix.os == 'ubuntu-22.04'}}
+        if: ${{ matrix.os == 'ubuntu-20.04'}}
         run: echo "UBUNTU_CODENAME=focal" >> $GITHUB_ENV
+      - name: Set Ubuntu codename (Jammy)
+        if: ${{ matrix.os == 'ubuntu-22.04'}}
+        run: echo "UBUNTU_CODENAME=jammy" >> $GITHUB_ENV
       - name: Install Dependencies
         run: |
           wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
