@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-22.04]
         version: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-18.04'}}
         run: echo "UBUNTU_CODENAME=bionic" >> $GITHUB_ENV
       - name: Set Ubuntu codename (Focal)
-        if: ${{ matrix.os == 'ubuntu-20.04'}}
+        if: ${{ matrix.os == 'ubuntu-22.04'}}
         run: echo "UBUNTU_CODENAME=focal" >> $GITHUB_ENV
       - name: Install Dependencies
         run: |
