@@ -1,0 +1,24 @@
+name: Test Homebrew LLVM
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 4 * * 1"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-12, ubuntu-22.04]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: brew install cmake lit llvm
+
+      - name: Run the testsuite
+        run: |
+         cmake -S . -B build -DCMAKE_PREFIX_PATH="$(brew --prefix llvm)"
+         cmake --build build --target check --verbose
