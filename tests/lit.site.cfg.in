@@ -1,5 +1,7 @@
 import os
 import lit
+import re
+import subprocess
 
 config.name = 'LLVM regression suite'
 config.test_format = lit.formats.ShTest(True)
@@ -57,3 +59,15 @@ enable_feature("libc++", "@ENABLE_LIBCXX@")
 enable_feature("static-libc++", "@ENABLE_STATIC_LIBCXX@")
 enable_feature("libunwind", "@ENABLE_LIBUNWIND@")
 enable_feature("support_hwasan", "@ENABLE_HWASAN@")
+
+def getLLVMMajorVersion():
+    out = subprocess.run(["llvm-config", "--version"], capture_output=True)
+    m = re.match(r'^([0-9]+).', out.stdout.decode('utf-8'))
+    if m:
+        return int(m.group(1))
+    else:
+        raise BaseException("Could not parse LLVM version"
+                            + out.stdout.decode('utf-8'))
+
+if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 21:
+   config.available_features.add("availability-compiler-rt-builtins-missing")
