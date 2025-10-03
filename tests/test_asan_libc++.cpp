@@ -8,7 +8,7 @@
 
 #include <stdexcept>
 int main() {
-#if CLANG_MAJOR > 18
+#if __clang_major__ > 18
     std::logic_error("");
 #endif
 }
