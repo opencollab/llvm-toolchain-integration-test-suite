@@ -41,6 +41,7 @@ Sensible configuration variables
 - ``ENABLE_LIBCXX``: ON (the default) if we assume libc++ is available
 - ``ENABLE_STATIC_LIBCXX``: ON (the default) if we assume libc++.a is available
 - ``ENABLE_LIBUNWIND``: ON (the default) if we assume libunwind is available
+- ``ENABLE_GOLD_TESTS``: ON (the default) if we assume gold linker is available
 - ``ENABLE_HWASAN``: Run hwasan tests. Autodetected based on the host system.
 - ``ENABLE_LIBOMP``: Run libomp tests. Autodetected based on the system. It can
     be manually forced via `-DENABLE_LIBOMP=<ON|OFF>` at cmake configure time

@@ -1,5 +1,5 @@
 // Test gold support
-// REQUIRES: clang
+// REQUIRES: clang, gold
 // RUN: %clang -fuse-ld=gold %s -o %t
 // RUN: %t
 
