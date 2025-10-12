@@ -59,6 +59,7 @@ enable_feature("libc++", "@ENABLE_LIBCXX@")
 enable_feature("static-libc++", "@ENABLE_STATIC_LIBCXX@")
 enable_feature("libunwind", "@ENABLE_LIBUNWIND@")
 enable_feature("support_hwasan", "@ENABLE_HWASAN@")
+enable_feature("float16", "@ENABLE_FLOAT16@")
 enable_feature("gold", "@ENABLE_GOLD_TESTS@")
 
 def getLLVMMajorVersion():
