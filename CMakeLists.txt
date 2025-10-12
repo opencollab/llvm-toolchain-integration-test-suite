@@ -57,6 +57,7 @@ option(ENABLE_COMPILER_RT "assume compiler-rt is available" ON)
 option(ENABLE_LIBCXX "assume libc++ is available" ON)
 option(ENABLE_STATIC_LIBCXX "assume libc++.a is available" ON)
 option(ENABLE_LIBUNWIND "assume libunwind is available" ON)
+option(ENABLE_GOLD_TESTS "enable tests that require gold linker" ON)
 
 # Detect if libomp is supported. Ubuntu stores the symlink library under a
 # version-dependent directory so we need to provide a hint to CMake to find it.
