@@ -73,3 +73,8 @@ def getLLVMMajorVersion():
 
 if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 21:
    config.available_features.add("availability-compiler-rt-builtins-missing")
+
+# This is necessary because LLVM 20 and earlier versions do build libunwind
+# on s390x even though the library is broken.
+if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 22:
+   config.available_features.add("availability-libunwind-missing")
