@@ -1,5 +1,5 @@
 // Test OpenMP Tools support
-// RUN: %clang -fopenmp -DTOOLS %s -shared -o %t_Tools.so
+// RUN: %clang -fopenmp -DTOOLS %s -fPIC -shared -o %t_Tools.so
 // RUN: %clang -fopenmp -UTOOLS %s -o %t
 // RUN: OMP_TOOL_LIBRARIES=%t_Tools.so %t | grep "INIT"
 // REQUIRES: clang, libomp
