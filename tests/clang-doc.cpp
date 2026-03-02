@@ -3,7 +3,7 @@
 // formats to check that the correct log message is emitted for each format.
 
 // This test exists because in Fedora we packaged clang-doc but some assets were
-// missing. See https://issues.redhat.com/browse/LLVM-530
+// missing. See https://bugzilla.redhat.com/show_bug.cgi?id=2443053
 
 // RUN: %clang-doc --format=html --executor=standalone %s | FileCheck --check-prefix=HTML %s
 // RUN: %clang-doc --format=json --executor=standalone %s | FileCheck --check-prefix=JSON %s
