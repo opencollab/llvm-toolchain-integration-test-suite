@@ -10,7 +10,6 @@
 // RUN: %clang-doc --format=md --executor=standalone %s | FileCheck --check-prefix=MD %s
 // RUN: %clang-doc --format=yaml --executor=standalone %s | FileCheck --check-prefix=YAML %s
 // REQUIRES: clang-doc
-// UNSUPPORTED: availability-clang-doc-missing
 
 int main(int argc, char** argv) {
         return 0;

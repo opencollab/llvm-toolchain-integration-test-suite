@@ -75,9 +75,6 @@ def getLLVMMajorVersion():
 if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 21:
    config.available_features.add("availability-compiler-rt-builtins-missing")
 
-if "@CLANG_DOC_BINARY@" == "CLANG_DOC_BINARY-NOTFOUND":
-    config.available_features.add("availability-clang-doc-missing")
-
 # This is necessary because LLVM 20 and earlier versions do build libunwind
 # on s390x even though the library is broken.
 if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 22:
