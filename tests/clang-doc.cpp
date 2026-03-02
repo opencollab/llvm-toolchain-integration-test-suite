@@ -5,10 +5,10 @@
 // This test exists because in Fedora we packaged clang-doc but some assets were
 // missing. See https://bugzilla.redhat.com/show_bug.cgi?id=2443053
 
-// RUN: %clang-doc --format=html --executor=standalone %s | FileCheck --check-prefix=HTML %s
-// RUN: %clang-doc --format=json --executor=standalone %s | FileCheck --check-prefix=JSON %s
-// RUN: %clang-doc --format=md --executor=standalone %s | FileCheck --check-prefix=MD %s
-// RUN: %clang-doc --format=yaml --executor=standalone %s | FileCheck --check-prefix=YAML %s
+// RUN: %clang-doc --format=html --executor=standalone %s | %FileCheck --check-prefix=HTML %s
+// RUN: %clang-doc --format=json --executor=standalone %s | %FileCheck --check-prefix=JSON %s
+// RUN: %clang-doc --format=md --executor=standalone %s | %FileCheck --check-prefix=MD %s
+// RUN: %clang-doc --format=yaml --executor=standalone %s | %FileCheck --check-prefix=YAML %s
 // REQUIRES: clang-doc
 
 int main(int argc, char** argv) {

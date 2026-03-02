@@ -24,6 +24,7 @@ macro(find_library_or_warn OUT_VAR name)
     endif()
 endmacro()
 
+find_program_or_warn(FILECHECK_BINARY FileCheck)
 find_program_or_warn(CLANGXX_BINARY clang++)
 find_program_or_warn(CLANG_BINARY clang)
 find_program_or_warn(CLANG_DOC_BINARY clang-doc)

@@ -27,6 +27,7 @@ def enable_library(name, library):
 # The order matters, e.g. substitution for clang-format-diff
 # must appear before clang-format, because the latter is a prefix of the former.
 
+enable_program('FileCheck', "@FILECHECK_BINARY@")
 enable_program('cc', "@CMAKE_C_COMPILER@")
 enable_program('cxx', "@CMAKE_CXX_COMPILER@")
 enable_program('clang-doc', "@CLANG_DOC_BINARY@")

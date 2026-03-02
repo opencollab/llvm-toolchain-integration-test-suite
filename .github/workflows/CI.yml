@@ -72,6 +72,7 @@ jobs:
          cmake -DLIT=/usr/lib/llvm-${{ matrix.version }}/build/utils/lit/lit.py \
            -DCLANG_BINARY=/usr/bin/clang-${{ matrix.version }} \
            -DCLANGXX_BINARY=/usr/bin/clang++-${{ matrix.version }} \
+           -DFILECHECK_BINARY=/usr/bin/FileCheck-${{ matrix.version }} \
            -DCLANG_DOC_BINARY=/usr/bin/clang-doc-${{ matrix.version }} \
            -DCLANG_TIDY_BINARY=/usr/bin/clang-tidy-${{ matrix.version }} \
            -DCLANG_FORMAT_BINARY=/usr/bin/clang-format-${{ matrix.version }} \
