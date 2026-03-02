@@ -29,6 +29,7 @@ def enable_library(name, library):
 
 enable_program('cc', "@CMAKE_C_COMPILER@")
 enable_program('cxx', "@CMAKE_CXX_COMPILER@")
+enable_program('clang-doc', "@CLANG_DOC_BINARY@")
 enable_program('clang-tidy', "@CLANG_TIDY_BINARY@")
 enable_program('clang-format-diff', "@CLANG_FORMAT_DIFF_BINARY@")
 enable_program('clang-format', "@CLANG_FORMAT_BINARY@")

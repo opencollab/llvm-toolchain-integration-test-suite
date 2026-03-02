@@ -26,6 +26,7 @@ endmacro()
 
 find_program_or_warn(CLANGXX_BINARY clang++)
 find_program_or_warn(CLANG_BINARY clang)
+find_program_or_warn(CLANG_DOC_BINARY clang-doc)
 find_program_or_warn(CLANG_TIDY_BINARY clang-tidy)
 find_program_or_warn(CLANG_FORMAT_BINARY clang-format)
 find_program_or_warn(CLANG_FORMAT_DIFF_BINARY clang-format-diff)
