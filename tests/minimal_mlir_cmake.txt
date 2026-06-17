@@ -3,7 +3,7 @@
 # RUN: rm -rf %t
 # RUN: mkdir -p %t/_build
 # RUN: cat %s > %t/CMakeLists.txt
-# RUN: cd %t/_build && %cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir
+# RUN: cd %t/_build && bash -c "%cmake ..  -DMLIR_DIR=`%llvm-config --libdir`/cmake/mlir"
 
 cmake_minimum_required(VERSION 3.13.4)
 project(standalone-dialect LANGUAGES CXX C)

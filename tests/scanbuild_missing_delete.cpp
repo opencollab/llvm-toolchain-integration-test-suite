@@ -2,7 +2,7 @@
 // REQUIRES: scan-build, scan-view
 // RUN: rm -rf %t.out && mkdir %t.out && cd %t.out && rm -rf *
 // RUN: %scan-build -o . %clangxx -c %s -o %t
-// RUN: %scan-view --no-browser * & WPID=$! && sleep 5 && kill $WPID
+// RUN: bash -c "%scan-view --no-browser * & WPID=$! && sleep 5 && kill $WPID"
 int main(int argc, char *argv[]) {
   while (argc--)
     new int();

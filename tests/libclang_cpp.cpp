@@ -1,10 +1,11 @@
 // Test the link against libclang-cppXX
 //
 // REQUIRES: llvm-config
-// RUN: %cxx  -DCLANG_MAJOR=`%llvm-config --version | cut -d . -f 1` -v %s -o %t `%llvm-config --cxxflags --ldflags --libs` -lclang-cpp
+// RUN: bash -c "%cxx -v %s -o %t `%llvm-config --cxxflags --ldflags --libs` -lclang-cpp"
 // RUN: ldd %t 2>&1 > %t.lddoutput
 // RUN: grep -q libclang-cpp %t.lddoutput
 
+#include "clang/Basic/Version.h"
 #include "clang/Tooling/CommonOptionsParser.h"
 #include "llvm/Support/CommandLine.h"
 
@@ -19,7 +20,7 @@ int main(int argc, const char **argv) {
     // CommonOptionsParser constructor will parse arguments and create a
     // CompilationDatabase.  In case of error it will terminate the program.
 
-#if CLANG_MAJOR < 13
+#if CLANG_VERSION_MAJOR < 13
     clang::tooling::CommonOptionsParser OptionsParser(argc, argv,
                                                MyToolCategory);
 #else

@@ -1,4 +1,4 @@
-// RUN: %cxx `%llvm-config --cxxflags` -fPIC -shared %s -o Hello.so
+// RUN: bash -c "%cxx `%llvm-config --cxxflags` -fPIC -shared %s -o Hello.so"
 // RUN: %opt -load ./Hello.so -help | grep "Hello World Pass"
 // REQUIRES: opt, llvm-config
 
