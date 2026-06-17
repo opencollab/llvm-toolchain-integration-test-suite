@@ -1,7 +1,7 @@
 // Test code coverage
 //
 // RUN: %clang -fprofile-instr-generate %s -o foo
-// RUN: LLVM_PROFILE_FILE="foo.profraw" ./foo
+// RUN: env LLVM_PROFILE_FILE="foo.profraw" ./foo
 // RUN: %llvm-profdata merge -output=foo.profdata foo.profraw
 // RUN: %clang -fprofile-instr-use=foo.profdata %s -o foo
 // RUN: ./foo
