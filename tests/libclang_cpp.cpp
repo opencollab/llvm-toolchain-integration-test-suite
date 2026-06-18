@@ -20,10 +20,6 @@ int main(int argc, const char **argv) {
     // CommonOptionsParser constructor will parse arguments and create a
     // CompilationDatabase.  In case of error it will terminate the program.
 
-#if CLANG_VERSION_MAJOR < 13
-    clang::tooling::CommonOptionsParser OptionsParser(argc, argv,
-                                               MyToolCategory);
-#else
     auto ExpectedParser = CommonOptionsParser::create(argc, argv, MyToolCategory);
     if (!ExpectedParser) {
         // Fail gracefully for unsupported options.
@@ -31,7 +27,6 @@ int main(int argc, const char **argv) {
         return 1;
     }
     CommonOptionsParser& OptionsParser = ExpectedParser.get();
-#endif
 
     // Use OptionsParser.getCompilations() and OptionsParser.getSourcePathList()
     // to retrieve CompilationDatabase and the list of input file paths.

@@ -71,8 +71,6 @@ def getLLVMMajorVersion():
         raise BaseException("Could not parse LLVM version"
                             + out.stdout.decode('utf-8'))
 
-config.available_features.add("llvm-" + str(getLLVMMajorVersion()))
-
 if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 21:
    config.available_features.add("availability-compiler-rt-builtins-missing")
 
