@@ -33,7 +33,9 @@ Sensible configuration variables
 
 - ``CLANG_BINARY``: path to the clang binary to check
 - ``CLANGXX_BINARY``: path to the clang++ binary to check
+- ``CLANG_DOC_BINARY``: path to the clang doc binary to check
 - ``CLANG_TIDY_BINARY``: path to the clang tidy binary to check
+- ``FILECHECK_BINARY``: path to the FileCheck program
 - ``LLD_BINARY``: path to the lld binary to check
 - ``LLDB_BINARY``: path to the lldb binary to check
 
@@ -56,7 +58,9 @@ Lit substitutions
 
     - ``%clang``
     - ``%clangxx``
+    - ``%clang-doc``
     - ``%clang-tidy``
+    - ``%FileCheck``
     - ``%lldb``
     - ``%lld``
     - ``%scan-build``
