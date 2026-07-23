@@ -78,3 +78,9 @@ if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 21:
 # on s390x even though the library is broken.
 if "s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@" and getLLVMMajorVersion() < 22:
    config.available_features.add("availability-libunwind-missing")
+
+if getLLVMMajorVersion() < 24 and \
+   ("s390x" == "@CMAKE_HOST_SYSTEM_PROCESSOR@"
+    or "ppc64le" == "@CMAKE_HOST_SYSTEM_PROCESSOR@"
+    or "ppc64" == "@CMAKE_HOST_SYSTEM_PROCESSOR@"):
+   config.available_features.add("availability-lto-cfi-missing")
