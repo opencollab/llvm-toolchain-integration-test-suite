@@ -60,7 +60,9 @@ enable_feature("static-libc++", "@ENABLE_STATIC_LIBCXX@")
 enable_feature("libunwind", "@ENABLE_LIBUNWIND@")
 enable_feature("support_hwasan", "@ENABLE_HWASAN@")
 enable_feature("float16", "@ENABLE_FLOAT16@")
-enable_feature("gold", "@ENABLE_GOLD_TESTS@")
+
+if os.path.exists("@LD_GOLD@"):
+    config.available_features.add("gold")
 
 def getLLVMMajorVersion():
     out = subprocess.run(["@LLVMCONFIG_BINARY@", "--version"], capture_output=True)
